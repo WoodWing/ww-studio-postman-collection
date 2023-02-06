@@ -53,20 +53,20 @@ Calls contained within the collection
  12. GetNamedQueries
  13. CheckTicket
 
-Administration (incomplete)
- - LogOn - Administration
- - CopyPublications
+## Administration (incomplete)
+ 1. LogOn - Administration
+ 2. CopyPublications
 
-System Administration (incomplete
+## System Administration (incomplete
 
-Planning (incomplete)
- - LogOn - Planning
- - Create Layouts
+## Planning (incomplete)
+ 3. LogOn - Planning
+ 4. Create Layouts
  
-Webhooks
- - LogOn
- - GetTriggerOptions
- - ListWebhookRegistrations
- - CreateWebhookRegistration
- - DeleteWebhookRegistration
- - LogOff
+## Webhooks
+ 1. LogOn
+ 2. GetTriggerOptions
+ 3. ListWebhookRegistrations
+ 4. CreateWebhookRegistration
+ 5. DeleteWebhookRegistration
+ 6. LogOff
