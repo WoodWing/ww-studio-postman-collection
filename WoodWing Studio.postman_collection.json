@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"Publications\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
 							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
@@ -80,7 +80,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetPublications\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": {{Current_Ticket}},\n        \"IDs\": null,\n        \"RequestInfo\": [\"PubChannels\"],\n        \"__classname__\": \"WflGetPublicationsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetPublications\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": null,\n        \"RequestInfo\": [\"PubChannels\"],\n        \"__classname__\": \"WflGetPublicationsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -113,7 +113,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"\",\n        \"ID\": \"1\",\n        \"Publication\": null,\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"Publication\": \"{{Publication_ID}}\",\n        \"Issue\": \"\",\n        \"Section\": \"\",\n        \"Type\":\"\",\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
@@ -141,7 +146,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Article\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Layout\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -174,7 +179,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"\",\n        \"IDs\": [\"\"],\n        \"Lock\": false,\n        \"Rendition\": \"native\",\n        \"RequestInfo\": [\"Relations\", \"PagesInfo\"],\n        \"HaveVersions\": [],\n        \"Areas\": null,\n        \"EditionId\": \"\",\n        \"SupportedContentSources\": [],\n        \"__classname__\": \"WflGetObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Lock\": false,\n        \"Rendition\": \"native\",\n        \"RequestInfo\": [\"Relations\", \"PagesInfo\"],\n        \"HaveVersions\": [],\n        \"Areas\": null,\n        \"EditionId\": \"\",\n        \"SupportedContentSources\": [],\n        \"__classname__\": \"WflGetObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,7 +212,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"DeleteObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"\",\n        \"IDs\": [\"\"],\n        \"Permanent\": false,\n        \"Areas\": [\"Workflow\"],\n        \"Context\": \"\",\n        \"__classname__\": \"WflDeleteObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"DeleteObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Permanent\": false,\n        \"Areas\": [\"Workflow\"],\n        \"Context\": \"\",\n        \"__classname__\": \"WflDeleteObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -273,7 +278,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetUserSettings\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"Settings\": [],\n\t\t\t\"__classname__\": \"WflGetUserSettingsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetUserSettings\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Settings\": [],\n\t\t\t\"__classname__\": \"WflGetUserSettingsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -306,7 +311,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetServerInfo\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"__classname__\": \"WflGetServerInfoRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetServerInfo\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"__classname__\": \"WflGetServerInfoRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -339,7 +344,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetUserGroups\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"__classname__\": \"WflGetUserGroupsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetUserGroups\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"__classname__\": \"WflGetUserGroupsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -372,7 +377,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetUserProfile\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n            \"RequestInfo\":[\"Memberships\"],\n\t\t\t\"__classname__\": \"WflGetUserProfileRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetUserProfile\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"RequestInfo\":[\"Memberships\"],\n\t\t\t\"__classname__\": \"WflGetUserProfileRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,7 +410,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetNamedQueries\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"__classname__\": \"WflGetNamedQueriesRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetNamedQueries\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"__classname__\": \"WflGetNamedQueriesRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -438,7 +443,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"CheckTicket\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"\",\n\t\t\t\"__classname__\": \"WflCheckTicketRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"CheckTicket\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"__classname__\": \"WflCheckTicketRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
