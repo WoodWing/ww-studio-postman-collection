@@ -32,10 +32,15 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
 
 
 ## Release Notes
-
 v0.1 - Initial release of the collection
 
-A list of Calls contained within the collection
+## ToDo
+----
+1. Script to automatically add the ticket to the calls
+2. Add and vet more calls
+3. Share some flows
+
+## A list of Calls contained within the collection
 
 ## Workflow (incomplete)
  1. LogOn
