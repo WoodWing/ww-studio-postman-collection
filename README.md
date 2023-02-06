@@ -17,10 +17,10 @@ The relationship between the Collection and the Environments is particularly hel
 
 In our environment, named 'WoodWing Studio', we have 4 variables:
 
-***Studio_Server_URL*** - referenced in the collection as {{Studio_Server_URL}}
-***User_Name*** - references in the collection as {{User_Name}}
-***Password*** - references in the collection as {{Password}}
-***Current_Ticket*** - references in the collection as {{Current_Ticket}}
+1. ***Studio_Server_URL*** - referenced in the collection as {{Studio_Server_URL}}
+2. ***User_Name*** - references in the collection as {{User_Name}}
+3. ***Password*** - references in the collection as {{Password}}
+4. ***Current_Ticket*** - references in the collection as {{Current_Ticket}}
 
 Here is a short video showing how the Studio collection and Environments work:
 
