@@ -21,6 +21,9 @@ In our environment, named 'WoodWing Studio', we have 4 variables:
 2. ***User_Name*** - references in the collection as {{User_Name}}
 3. ***Password*** - references in the collection as {{Password}}
 4. ***Current_Ticket*** - references in the collection as {{Current_Ticket}}
+5. ***Publication_ID*** - references in the collection as {{Publication_ID}}
+6. ***Status_ID*** - references in the collection as {{Status_ID}}
+7. ***Object_ID*** - references in the collection as {{Object_ID}}
 
 Flows
 
@@ -33,6 +36,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
 
 ## Release Notes
 v0.1 - Initial release of the collection
+v0.2 - Added variables to the environment for Publication ID, Status ID and Object ID, Add variables to all of the current Workflow calls 
 
 ## ToDo
 ----
