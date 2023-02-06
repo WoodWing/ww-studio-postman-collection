@@ -28,15 +28,14 @@ Flows are for the creation of a complete set of calls and responses to the API e
 
 Here is a short video showing how the Studio collection works with Postman Environments and Flows work:
 
-Uploading WW-Studio-Collections-Environ-Flow.mp4…
+https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-911a-3167779e4e27.mp4
 
 
-
-Release Notes
+## Release Notes
 
 v0.1 - Initial release of the collection
 
-Calls contained within the collection
+A list of Calls contained within the collection
 
 ## Workflow (incomplete)
  1. LogOn
