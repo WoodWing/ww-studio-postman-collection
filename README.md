@@ -22,15 +22,15 @@ In our environment, named 'WoodWing Studio', we have 4 variables:
 3. ***Password*** - references in the collection as {{Password}}
 4. ***Current_Ticket*** - references in the collection as {{Current_Ticket}}
 
-Here is a short video showing how the Studio collection and Environments work:
-
-<< insert video >>
-
 Flows
 
 Flows are for the creation of a complete set of calls and responses to the API endpoint. Seeing is believing so here is a short video showing the basic creation and usage of a Flow using the Collection and the Environment:
 
-<< insert video >>
+Here is a short video showing how the Studio collection works with Postman Environments and Flows work:
+
+Uploading WW-Studio-Collections-Environ-Flow.mp4…
+
+
 
 Release Notes
 
