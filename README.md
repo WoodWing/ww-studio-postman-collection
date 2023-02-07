@@ -17,26 +17,28 @@ The relationship between the Collection and the Environments is particularly hel
 
 In our environment, named 'WoodWing Studio', we have 4 variables:
 
-1. ***Studio_Server_URL*** - referenced in the collection as {{Studio_Server_URL}}
-2. ***User_Name*** - references in the collection as {{User_Name}}
-3. ***Password*** - references in the collection as {{Password}}
-4. ***Current_Ticket*** - references in the collection as {{Current_Ticket}}
-5. ***Publication_ID*** - references in the collection as {{Publication_ID}}
-6. ***Status_ID*** - references in the collection as {{Status_ID}}
-7. ***Object_ID*** - references in the collection as {{Object_ID}}
+1. ***Studio_Server_URL*** - Add to the body parameters as {{Studio_Server_URL}}
+2. ***User_Name*** - Add to the body parameters as {{User_Name}}
+3. ***Password*** - Add to the body parameters as {{Password}}
+4. ***Current_Ticket*** - Add to the body parameters as {{Current_Ticket}}
+5. ***Publication_ID*** - Add to the body parameters as {{Publication_ID}}
+6. ***Status_ID*** - Add to the body parameters as {{Status_ID}}
+7. ***Object_ID*** - Add to the body parameters as {{Object_ID}}
+8. ***Admin_User_Name*** - Add to the body parameters as {{Admin_User_Name}}
+9. ***Admin_User_Password*** - Add to the body parameters as {{Admin_User_Password}}
+10. ***Admin_Current_Ticket*** - Add to the body parameters as {{Admin_Current_Ticket}} 
 
-Flows
+***Flows***
 
 Flows are for the creation of a complete set of calls and responses to the API endpoint. Seeing is believing so here is a short video showing the basic creation and usage of a Flow using the Collection and the Environment:
-
-Here is a short video showing how the Studio collection works with Postman Environments and Flows work:
 
 https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-911a-3167779e4e27.mp4
 
 
 ## Release Notes
 v0.1 - Initial release of the collection
-v0.2 - Added variables to the environment for Publication ID, Status ID and Object ID, Add variables to all of the current Workflow calls 
+v0.2 - Added variables to the environment for Publication ID, Status ID and Object ID, Add variables to all of the current Workflow calls
+v0.3 - Added Environment variables (Admin_User_Name, Admin_User_Password, Admin_Current_Ticket) to the Environment. Added 'CreateIssues' to the 'Administration' portion of the collection and did some work to clean up the other existing 'Administration' Requests.
 
 ## ToDo
 ----
@@ -64,6 +66,9 @@ v0.2 - Added variables to the environment for Publication ID, Status ID and Obje
 ## Administration (incomplete)
  1. LogOn - Administration
  2. CopyPublications
+ 3. GetIssues
+ 4. CreateIssues
+ 5. LogOff - Administration
 
 ## System Administration (incomplete
 
