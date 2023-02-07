@@ -37,36 +37,6 @@
 								{
 									"key": "protocol",
 									"value": "JSON"
-								},
-								{
-									"key": "username",
-									"value": "jeffgapp",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "ww",
-									"disabled": true
-								},
-								{
-									"key": "ClientName",
-									"value": "Postman",
-									"disabled": true
-								},
-								{
-									"key": "ClientAppName",
-									"value": "Postman",
-									"disabled": true
-								},
-								{
-									"key": "RequestTicket[]",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "RequestInfo",
-									"value": "{\"ServerInfo\"}",
-									"disabled": true
 								}
 							]
 						}
@@ -481,10 +451,18 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"\",\n\t\t\t\"Password\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"2\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"AdminUser\": \"{{Admin_User_Name}}\",\n\t\t\t\"Password\": \"{{Admin_User_Password}}\",\n            \"Ticket\": \"\",\n            \"Server\": \"\",\n\t\t\t\"ClientName\": \"postman\",\n            \"Domain\": \"\",\n\t\t\t\"ClientAppName\": \"postman_sample_admin_request\",\n            \"ClientAppVersion\": \"\",\n            \"ClientAppSerial\": \"\",\n            \"ClientAppCode\": \"\",\n\t\t\t\"__classname__\":\"AdmLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "/StudioServer/adminindex.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
 							"path": [
 								"StudioServer",
 								"adminindex.php"
@@ -493,26 +471,72 @@
 								{
 									"key": "protocol",
 									"value": "JSON"
-								},
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIssues",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"GetIssues\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Admin_Current_Ticket}}\",\n            \"RequestModes\": [\"GetIssues\"],\n            \"PublicationId\": \"{{Publication_ID}}\",\n            \"PubChannelId\": \"1\",\n            \"__classname__\": \"AdmGetIssuesRequest\"\n        }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"adminindex.php"
+							],
+							"query": [
 								{
-									"key": "user",
-									"value": "woodwing"
-								},
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateIssues",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateIssues\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Admin_Current_Ticket}}\",\n        \"RequestModes\": [\"\"],\n        \"PublicationId\": \"{{Publication_ID}}\",\n        \"PubChannelId\": \"1\",\n        \"Issues\":[\n            {\n                \"Name\": \"3rd Issue\",\n                \"Id\": null,\n                \"Description\": \"The Issue Description\",\n                \"SortOrder\": 10,\n                \"EmailNotify\": null,\n                \"ReversedRead\": null,\n                \"OverrulePublication\": null,\n                \"Deadline\": \"\",\n                \"ExpectedPages\": \"16\",\n                \"Subject\": \"The Issue Subject\",\n                \"Activated\": true,\n                \"PublicationDate\": \"\",\n                \"ExtraMetaData\": [],\n                \"CalculateDeadlines\": false,\n                \"__classname__\": \"AdmIssue\"\n            }\n        ],\n        \"__classname__\": \"AdmCreateIssuesRequest\"\n     }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"adminindex.php"
+							],
+							"query": [
 								{
-									"key": "password",
-									"value": "ww"
-								},
-								{
-									"key": "ClientName",
-									"value": "Postman"
-								},
-								{
-									"key": "ClientAppName",
-									"value": "Postman"
-								},
-								{
-									"key": "Ticket",
-									"value": null
+									"key": "protocol",
+									"value": "JSON"
 								}
 							]
 						}
@@ -526,7 +550,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\":\"CopyPublications\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"\",\n        \"RequestModes\":[\"GetPublications\"],\n        \"DuplicateIssues\":true,\n        \"SourcePubId\":1,\n        \"TargetPubs\": [{\n                \"Id\":null,\n                \"Name\":\"Copied Publication \",\n                \"Description\":\"Publication Description\",\n                \"SortOrder\":null,\n                \"EmailNotify\":false,\n                \"ReversedRead\":false,\n                \"AutoPurge\":null,\n                \"DefaultChannelId\":null,\n                \"ExtraMetaData\":[null],\n                \"PubChannels\":[null],\n                \"Issues\":[null],\n                \"Editions\":[null],\n                \"Sections\":[null],\n                \"UserGroups\":[null],\n                \"AdminGroups\":[null],\n                \"Workflows\":[null],\n                \"Routings\":[null],\n                \"CalculateDeadlines\":[null],\n                \"__classname__\": \"AdmPublication\"\n        }],\n        \"__classname__\": \"AdmCopyPublicationsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\":\"CopyPublications\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Admin_Current_Ticket}}\",\n        \"RequestModes\":[\"GetPublications\"],\n        \"DuplicateIssues\":true,\n        \"SourcePubId\":1,\n        \"TargetPubs\": [{\n                \"Id\":null,\n                \"Name\":\"Copied Publication \",\n                \"Description\":\"Publication Description\",\n                \"SortOrder\":null,\n                \"EmailNotify\":false,\n                \"ReversedRead\":false,\n                \"AutoPurge\":null,\n                \"DefaultChannelId\":null,\n                \"ExtraMetaData\":[null],\n                \"PubChannels\":[null],\n                \"Issues\":[null],\n                \"Editions\":[null],\n                \"Sections\":[null],\n                \"UserGroups\":[null],\n                \"AdminGroups\":[null],\n                \"Workflows\":[null],\n                \"Routings\":[null],\n                \"CalculateDeadlines\":[null],\n                \"__classname__\": \"AdmPublication\"\n        }],\n        \"__classname__\": \"AdmCopyPublicationsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -546,6 +570,39 @@
 							"path": [
 								"StudioServer",
 								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin LogOff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"LogOff\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Admin_Current_Ticket}}\",\n                \"__classname__\": \"WflLogOffRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
 							],
 							"query": [
 								{
