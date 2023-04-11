@@ -25,13 +25,13 @@
 							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"Publications\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
 								"StudioServer",
-								"index.php"
+								"adminindex.php"
 							],
 							"query": [
 								{
@@ -124,6 +124,39 @@
 							}
 						},
 						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QueryObjects Digital Article Templates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Article\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
 							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
@@ -157,13 +190,46 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
 								"StudioServer",
-								"index.php"
+								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetObjectProperties",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"Comment\": \"This is my comment 2\",\n                \"__classname__\": \"WorkflowMetaData\"\n            },\n            \"ExtraMetaData\": null,\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": null,\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"adminindex.php"
 							],
 							"query": [
 								{
@@ -970,6 +1036,10 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Digital Articles",
+			"item": []
 		}
 	]
 }
