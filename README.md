@@ -39,6 +39,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.1 - Initial release of the collection
  - v0.2 - Added variables to the environment for Publication ID, Status ID and Object ID, Add variables to all of the current Workflow calls
  - v0.3 - Added Environment variables (Admin_User_Name, Admin_User_Password, Admin_Current_Ticket) to the Environment. Added 'CreateIssues' to the 'Administration' portion of the collection and did some work to clean up the other existing 'Administration' Requests.
+ - v0.4 - Added 'SetObjectProperties' to the collection
 
 ## ToDo
 ----
@@ -62,6 +63,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  11. GetUserProfile
  12. GetNamedQueries
  13. CheckTicket
+ 14. SetObjectProperties (added April 11, 2023)
 
 ## Administration (incomplete)
  1. LogOn - Administration
