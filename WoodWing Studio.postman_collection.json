@@ -22,16 +22,148 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"Publications\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
 								"StudioServer",
-								"adminindex.php"
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QueryObjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Article\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetObjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Lock\": false,\n        \"Rendition\": \"native\",\n        \"RequestInfo\": [\"Relations\", \"PagesInfo\"],\n        \"HaveVersions\": [],\n        \"Areas\": null,\n        \"EditionId\": \"\",\n        \"SupportedContentSources\": [],\n        \"__classname__\": \"WflGetObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateObjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"Lock\": false,\n        \"Objects\":[{\n            \"Object\": {\n                \"MetaData\": {\n                  \"BasicMetaData\": {\n                  \"ID\": null,\n                  \"DocumentID\": null,\n                  \"Name\": \"test article\",\n                  \"Type\": \"Article\",\n                  \"Publication\": {\n                    \"Id\": \"25\",\n                    \"Name\": \"WoodWing\"\n                  },\n                  \"Category\": null,\n                  \"MasterId\": null,\n                  \"StoryId\": null,\n                  \"__classname__\": \"BasicMetaData\"\n                },\n                \"RightsMetaData\": {\n                  \"CopyrightMarked\": false,\n                  \"Copyright\": null,\n                  \"CopyrightURL\": null,\n                  \"__classname__\": \"WorkflowMetaData\"\n                },\n                \"SourceMetaData\": {\n                  \"Credit\": null,\n                  \"Source\": null,\n                  \"Author\": null,\n                  \"__classname\": \"SourceMetaData\"\n                },\n                \"ContentMetaData\": {\n                  \"Description\": null,\n                  \"DescriptionAuthor\": null,\n                  \"Keywords\": [],\n                  \"Slugline\": null,\n                  \"Format\": null,\n                  \"Columns\": null,\n                  \"Width\": null,\n                  \"Height\": null,\n                  \"Dpi\": null,\n                  \"LengthWords\": null,\n                  \"LengthChars\": null,\n                  \"LengthParas\": null,\n                  \"LengthLines\": null,\n                  \"PlainContent\": null,\n                  \"FileSize\": null,\n                  \"ColorSpace\": null,\n                  \"HighResFile\": null,\n                  \"Encoding\": null,\n                  \"Compression\": null,\n                  \"KeyFrameEveryFrames\": null,\n                  \"Channels\": null,\n                  \"AspectRatio\": null,\n                  \"Orientation\": null,\n                  \"__classname\": \"ContentMetaData\"\n                },\n                \"WorkflowMetaData\": {\n                  \"Urgency\": null,\n                  \"Modifier\": null,\n                  \"Modified\": null,\n                  \"Creator\": null,\n                  \"Created\": null,\n                  \"Comment\": \"This is my comment 2\",\n                  \"State\": {\n                    \"Id\": \"328\",\n                    \"Name\": \"Draft\",\n                    \"Type\": \"Article\",\n                    \"Produce\": false,\n                    \"Color\": null,\n                    \"DefaultRouteTo\": \"\"\n                  },\n                  \"RouteTo\": null,\n                  \"LockedBy\": null,\n                  \"Version\" : null,\n                  \"DeadlineSoft\": null,\n                  \"Rating\": null,\n                  \"Deletor\": null,\n                  \"Deleted\": null,\n                  \"__classname__\": \"WorkflowMetaData\"\n                },\n                \"ExtraMetaData\": null,\n                  \"__classname__\": \"MetaData\"\n                },\n                \"Relations\": [],\n                \"Pages\":[],\n                \"Files\":[{\n                  \"Attachment\": {\n                      \"Rendition\": \"Native\",\n                      \"Type\": \"application\\/ww-digital+json\",\n                      \"Content\": null,\n                      \"FilePath\": null,\n                      \"FileUrl\": \"{{FileUploadUrl}}\",\n                      \"EditionId\": null,\n                      \"ContentSourceFileLink\": null,\n                      \"ContentSourceProxyLink\": null\n                  }\n                }],\n                \"Messages\": [],\n                \"Elements\": [],\n                \"Targets\":[],\n                \"Renditions\": [],\n                \"MessageList\": null,\n                \"ObjectLabels\": [],\n                \"InDesignArticles\": [],\n                \"Placements\": [],\n                \"Operations\": []\n            }\n         }],\n          \"Messages\": [],\n          \"AutoNaming\": false,\n          \"Areas\": null,\n          \"ReplaceGUIDs\": \"false\",\n          \"__classname__\": \"WflCreateObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetObjectProperties",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"Comment\": \"This is my comment 2\",\n                \"__classname__\": \"WorkflowMetaData\"\n            },\n            \"ExtraMetaData\": null,\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": null,\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
 							],
 							"query": [
 								{
@@ -83,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"Publication\": \"{{Publication_ID}}\",\n        \"Issue\": \"\",\n        \"Section\": \"\",\n        \"Type\":\"\",\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"7245\",\n        \"Publication\": null,\n        \"Issue\": null,\n        \"Section\": null,\n        \"Type\":null,\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -98,138 +230,6 @@
 							"path": [
 								"StudioServer",
 								"index.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "QueryObjects",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Layout\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"StudioServer",
-								"adminindex.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "QueryObjects Digital Article Templates",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Article\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"StudioServer",
-								"index.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetObjects",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Lock\": false,\n        \"Rendition\": \"native\",\n        \"RequestInfo\": [\"Relations\", \"PagesInfo\"],\n        \"HaveVersions\": [],\n        \"Areas\": null,\n        \"EditionId\": \"\",\n        \"SupportedContentSources\": [],\n        \"__classname__\": \"WflGetObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"StudioServer",
-								"adminindex.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SetObjectProperties",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"Comment\": \"This is my comment 2\",\n                \"__classname__\": \"WorkflowMetaData\"\n            },\n            \"ExtraMetaData\": null,\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": null,\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"StudioServer",
-								"adminindex.php"
 							],
 							"query": [
 								{
@@ -249,39 +249,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"method\": \"DeleteObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Permanent\": false,\n        \"Areas\": [\"Workflow\"],\n        \"Context\": \"\",\n        \"__classname__\": \"WflDeleteObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"StudioServer",
-								"index.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "LogOff",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"LogOff\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Current_Ticket}}\",\n                \"__classname__\": \"WflLogOffRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -504,6 +471,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "LogOff",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"LogOff\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Current_Ticket}}\",\n                \"__classname__\": \"WflLogOffRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -624,16 +624,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://docker.for.mac.localhost:81/StudioServer/adminindex.php?protocol=JSON",
-							"protocol": "http",
+							"raw": "{{Studio_Server_URL}}/StudioServer/StudioServer/adminindex.php?protocol=JSON",
 							"host": [
-								"docker",
-								"for",
-								"mac",
-								"localhost"
+								"{{Studio_Server_URL}}"
 							],
-							"port": "81",
 							"path": [
+								"StudioServer",
 								"StudioServer",
 								"adminindex.php"
 							],
@@ -699,15 +695,10 @@
 							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"\",\n\t\t\t\"Password\":\"\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
-							"raw": "http://docker.for.mac.localhost:81/StudioServer/editorialplan.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
-							"protocol": "http",
+							"raw": "{{Studio_Server_URL}}/StudioServer/editorialplan.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
 							"host": [
-								"docker",
-								"for",
-								"mac",
-								"localhost"
+								"{{Studio_Server_URL}}"
 							],
-							"port": "81",
 							"path": [
 								"StudioServer",
 								"editorialplan.php"
@@ -757,15 +748,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://docker.for.mac.localhost:81/StudioServer/editorialplan.php?protocol=JSON",
-							"protocol": "http",
+							"raw": "{{Studio_Server_URL}}/StudioServer/editorialplan.php?protocol=JSON",
 							"host": [
-								"docker",
-								"for",
-								"mac",
-								"localhost"
+								"{{Studio_Server_URL}}"
 							],
-							"port": "81",
 							"path": [
 								"StudioServer",
 								"editorialplan.php"
@@ -1039,7 +1025,234 @@
 		},
 		{
 			"name": "Digital Articles",
+			"item": [
+				{
+					"name": "Supporting Requests",
+					"item": [
+						{
+							"name": "Upload Transfer Server Request",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random UUID",
+											"const random_uuid = uuidv4();",
+											"  ",
+											"function uuidv4() {",
+											"    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'",
+											"    .replace(/[xy]/g, function (c) {",
+											"        const r = Math.random() * 16 | 0, ",
+											"            v = c == 'x' ? r : (r & 0x3 | 0x8);",
+											"        return v.toString(16);",
+											"    });",
+											"}",
+											"pm.environment.set(\"Uuid_For_PUT\", random_uuid);",
+											"",
+											"// Print the UUID",
+											"console.log(random_uuid);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "testfile.json"
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"StudioServer",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Transfer Server Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&httpmethod=DELETE",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"StudioServer",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										},
+										{
+											"key": "httpmethod",
+											"value": "DELETE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download Transfer Server Request",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&format=application/ww-digital+json&httpmethod=GET",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"StudioServer",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										},
+										{
+											"key": "format",
+											"value": "application/ww-digital+json"
+										},
+										{
+											"key": "httpmethod",
+											"value": "GET"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "QueryObjects Digital Article Templates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"ArticleTemplate\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateObjects Digital Article",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {    \n                    \"MetaData\": {  \n                        \"BasicMetaData\": {\n                            \"Name\": \"testfile\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": 1,\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Article\",\n                            \"Publication\": {\n                                \"Id\": \"1\",\n                                \"Name\": \"WW News\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"1\",\n                                \"Name\": \"Draft\",\n                                \"Type\": \"Article\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\",\n                            \"Format\": \"application/ww-digital+json\"\n                        },\n                        \"ExtraMetaData\": [\n                        \t{\n\t\t\t\t\t\t\t\t\"Property\": \"C_CS_FILEFORMATVERSION\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"2.4\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"Property\": \"C_CS_COMPONENTSET\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"df0afd50-9e44-4882-8324-d6e31432ce90\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t],\n                    \t\"__classname__\": \"MetaData\"\n                    },\n                    \"Files\": [\n                        {\n                            \"Rendition\": \"native\",\n                            \"Type\": \"application/ww-digital+json\",\n                            \"FileUrl\": \"{{Studio_Server_URL}}/transferindex.php?fileguid={{Uuid_For_PUT}}\",\n                            \"__classname__\": \"Attachment\"\n                        }\n                    ],\n                \"__classname__\": \"Object\"\n                }\n                \n            ]\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"StudioServer",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Misc",
 			"item": []
+		}
+	],
+	"variable": [
+		{
+			"key": "UUID_For_PUT",
+			"value": ""
 		}
 	]
 }
