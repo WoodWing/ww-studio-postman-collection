@@ -26,7 +26,9 @@ In our environment, named 'WoodWing Studio', we have 4 variables:
 7. ***Object_ID*** - Add to the body parameters as {{Object_ID}}
 8. ***Admin_User_Name*** - Add to the body parameters as {{Admin_User_Name}}
 9. ***Admin_User_Password*** - Add to the body parameters as {{Admin_User_Password}}
-10. ***Admin_Current_Ticket*** - Add to the body parameters as {{Admin_Current_Ticket}} 
+10. ***Admin_Current_Ticket*** - Add to the body parameters as {{Admin_Current_Ticket}}
+11. ***FileUploadURL*** - Just a reference to '/transferindex.php' file
+12. ***Uuid_For_PUT*** - Variable to hold the UUID generated in the 'PUT' call 'Upload Transfer Server Request' to upload the file. Look in the 'Pre-request Script' area for the actual script.
 
 ***Flows***
 
@@ -40,6 +42,20 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.2 - Added variables to the environment for Publication ID, Status ID and Object ID, Add variables to all of the current Workflow calls
  - v0.3 - Added Environment variables (Admin_User_Name, Admin_User_Password, Admin_Current_Ticket) to the Environment. Added 'CreateIssues' to the 'Administration' portion of the collection and did some work to clean up the other existing 'Administration' Requests.
  - v0.4 - Added 'SetObjectProperties' to the collection
+ - v0.5 - Add some calls for a specific use case... creating a Digital Article. See the directory called 'Digital Articles'.
+The new calls are the following:  
+
+Located in 'Digital Articles > Supporting Requests'
+1. Upload Transfer Server request (PUT)
+2. Delete Transfer Server Request (PUT)
+3. Download Transfer Server Request (GET)
+
+Additional calls (Copy of already existing calls modified for the use case): 
+Located in 'Digital Articles'
+
+1. QueryObjects Digital Article Template
+2. CreateObjects Digital Article
+
 
 ## ToDo
 ----
