@@ -1,5 +1,5 @@
 # Introduction
-This is a Postman collection for working with WoodWing Studio. The collection itself contains, at this time, a subset of the available API calls. Those that are included in the collection are noted below. All of the Assets API documentation can be found in the SDK doc
+This is a Postman collection for working with WoodWing Studio. The collection itself contains, at this time, a subset of the available API calls. Those that are included in the collection are noted below. All of the Studio API documentation can be found in the SDK doc
 
 In some cases we have added parameters to the calls so that they may be more useful as a starting point.
 
