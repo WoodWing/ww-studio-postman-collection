@@ -15,7 +15,7 @@ Please note that to use this collection you will need to create your Environment
 
 The relationship between the Collection and the Environments is particularly helpful. Environments allows us to create variables, attach values to the variables and then pass the variable value(s) to subsequent calls. The variables can be used calling each individual call within the collection or you can set up a Flow to use them.
 
-In our environment, named 'WoodWing Studio', we have 4 variables:
+In our environment, named 'WoodWing Studio', we have a variety of variables:
 
 1. ***Studio_Server_URL*** - Add to the body parameters as {{Studio_Server_URL}}
 2. ***User_Name*** - Add to the body parameters as {{User_Name}}
