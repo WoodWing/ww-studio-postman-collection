@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"IDs\": [\"{{Object_ID}}\"],\n        \"Lock\": false,\n        \"Rendition\": \"native\",\n        \"RequestInfo\": [\"Relations\", \"PagesInfo\"],\n        \"HaveVersions\": [],\n        \"Areas\": null,\n        \"EditionId\": \"\",\n        \"SupportedContentSources\": [],\n        \"__classname__\": \"WflGetObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -786,12 +786,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}StudioServer/index.php?protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}"
+								"{{Studio_Server_URL}}StudioServer"
 							],
 							"path": [
-								"StudioServer",
 								"index.php"
 							],
 							"query": [
@@ -839,12 +838,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}"
+								"{{Studio_Server_URL}}StudioServer"
 							],
 							"path": [
-								"StudioServer",
 								"pluginindex.php"
 							],
 							"query": [
@@ -880,12 +878,91 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}"
+								"{{Studio_Server_URL}}StudioServer"
 							],
 							"path": [
-								"StudioServer",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "Webhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 47,\n\t\t\t\"__classname__\": \"WhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}StudioServer"
+							],
+							"path": [
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "Webhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"UpdateWebhookRegistration\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Id\": 47,\n                \"Name\": \"SendWhenObjectCreated\",\n                \"Url\": \"https://www.jeffgapp.net\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"com.woodwing.studio\\/object\\/created\"\n                        ],\n                        \"__classname__\": \"WhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"WhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"WhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}StudioServer"
+							],
+							"path": [
 								"pluginindex.php"
 							],
 							"query": [
@@ -921,12 +998,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}"
+								"{{Studio_Server_URL}}StudioServer"
 							],
 							"path": [
-								"StudioServer",
 								"pluginindex.php"
 							],
 							"query": [
@@ -954,7 +1030,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"DeleteWebhookRegistration\",\n    \"id\": \"\",\n     \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 7,\n            \"__classname__\": \"WhRegDeleteWebhookRegistrationRequest\"\n        }\n     ],\n     \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"DeleteWebhookRegistration\",\n    \"id\": \"\",\n     \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 46,\n            \"__classname__\": \"WhRegDeleteWebhookRegistrationRequest\"\n        }\n     ],\n     \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -962,12 +1038,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}"
+								"{{Studio_Server_URL}}StudioServer"
 							],
 							"path": [
-								"StudioServer",
 								"pluginindex.php"
 							],
 							"query": [
