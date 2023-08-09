@@ -88,7 +88,7 @@ Located in 'Digital Articles'
  4. CreateIssues
  5. LogOff - Administration
 
-## System Administration (incomplete
+## System Administration (incomplete)
 
 ## Planning (incomplete)
  3. LogOn - Planning
@@ -99,5 +99,7 @@ Located in 'Digital Articles'
  2. GetTriggerOptions
  3. ListWebhookRegistrations
  4. CreateWebhookRegistration
- 5. DeleteWebhookRegistration
- 6. LogOff
+ 5. GetWebhookRegistration  (added August 9, 2023)
+ 6. UpdateWebhookRegistration (added August 9, 2023)
+ 7. DeleteWebhookRegistration
+ 8. LogOff
