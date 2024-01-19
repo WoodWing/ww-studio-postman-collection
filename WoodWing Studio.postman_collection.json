@@ -25,12 +25,12 @@
 							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -58,12 +58,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -91,12 +91,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -124,12 +124,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -157,12 +157,45 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetObjectProperties Custom Field",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"Comment\": \"This is my comment\",\n                \"__classname__\": \"WorkflowMetaData\"\n            },\n            \"ExtraMetaData\": [{\n            \t\"Property\": \"C_TW_COLLECTION_ID\",\n                \"Values\": [\"sent to twitter\"],\n            \t\"__classname__\": \"ExtraMetaData\"\n            }],\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": null,\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -190,12 +223,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"adminindex.php"
 							],
 							"query": [
@@ -223,12 +256,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -256,12 +289,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -275,13 +308,13 @@
 					"response": []
 				},
 				{
-					"name": "GetUsersSettings",
+					"name": "GetUsers",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"GetUserSettings\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Settings\": [],\n\t\t\t\"__classname__\": \"WflGetUserSettingsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"GetUsers\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"UserID\", \"Operation\": \"=\", \"Value\": \"woodwing\" }\n            ]\n\t\t},\n\t\t\t\"__classname__\": \"WflGetUsersRequest\"\n\t\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,12 +322,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -322,12 +355,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -355,12 +388,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -388,12 +421,45 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserSettings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"GetUserSettings\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Settings\":[],\n\t\t\t\"__classname__\": \"WflGetUserSettingsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -421,12 +487,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -454,12 +520,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -525,12 +591,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"adminindex.php"
 							],
 							"query": [
@@ -558,12 +624,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"adminindex.php"
 							],
 							"query": [
@@ -591,12 +657,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"adminindex.php"
 							],
 							"query": [
@@ -624,13 +690,79 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/StudioServer/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/StudioServer/adminindex.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"StudioServer",
-								"StudioServer",
+								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"GetUsers\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Admin_Current_Ticket}}\",\n\t\t\t\"RequestModes\": [],\n            \"GroupId\": null,\n            \"UserIds\":null,\n\t\t\t\"__classname__\": \"AdmGetUsersRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserGroups",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"GetUserGroups\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Admin_Current_Ticket}}\",\n\t\t\t\"RequestModes\": [],\n            \"UserId\":1,\n            \"GroupIds\":[\"2\"],\n\t\t\t\"__classname__\": \"AdmGetUserGroupsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
 								"adminindex.php"
 							],
 							"query": [
@@ -658,12 +790,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -695,12 +827,12 @@
 							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"\",\n\t\t\t\"Password\":\"\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/editorialplan.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"editorialplan.php"
 							],
 							"query": [
@@ -748,12 +880,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/editorialplan.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"editorialplan.php"
 							],
 							"query": [
@@ -786,11 +918,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -838,11 +971,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -878,11 +1012,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -918,11 +1053,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -950,7 +1086,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"UpdateWebhookRegistration\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Id\": 47,\n                \"Name\": \"SendWhenObjectCreated\",\n                \"Url\": \"https://www.jeffgapp.net\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"com.woodwing.studio\\/object\\/created\"\n                        ],\n                        \"__classname__\": \"WhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"WhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"WhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"UpdateWebhookRegistration\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Id\": 47,\n                \"Name\": \"SendWhenObjectCreated\",\n                \"Url\": \"https://www.jeffgapp.com\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"com.woodwing.studio\\/object\\/created\"\n                        ],\n                        \"__classname__\": \"WhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"WhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"WhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -958,11 +1094,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -998,11 +1135,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -1038,11 +1176,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}StudioServer/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=Webhooks&interface=reg&protocol=JSON",
 							"host": [
-								"{{Studio_Server_URL}}StudioServer"
+								"{{Studio_Server_URL}}"
 							],
 							"path": [
+								"{{Studio_Server_Directory}}",
 								"pluginindex.php"
 							],
 							"query": [
@@ -1078,12 +1217,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -1148,12 +1287,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}",
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}",
 									"host": [
 										"{{Studio_Server_URL}}"
 									],
 									"path": [
-										"StudioServer",
+										"{{Studio_Server_Directory}}",
 										"{{FileUploadUrl}}"
 									],
 									"query": [
@@ -1180,12 +1319,12 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&httpmethod=DELETE",
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&httpmethod=DELETE",
 									"host": [
 										"{{Studio_Server_URL}}"
 									],
 									"path": [
-										"StudioServer",
+										"{{Studio_Server_Directory}}",
 										"{{FileUploadUrl}}"
 									],
 									"query": [
@@ -1208,23 +1347,20 @@
 						},
 						{
 							"name": "Download Transfer Server Request",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
 							"request": {
-								"method": "GET",
+								"method": "DELETE",
 								"header": [],
 								"body": {
 									"mode": "raw",
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{Studio_Server_URL}}/StudioServer/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&format=application/ww-digital+json&httpmethod=GET",
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&format=application/ww-digital+json&httpmethod=GET",
 									"host": [
 										"{{Studio_Server_URL}}"
 									],
 									"path": [
-										"StudioServer",
+										"{{Studio_Server_Directory}}",
 										"{{FileUploadUrl}}"
 									],
 									"query": [
@@ -1266,12 +1402,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -1299,12 +1435,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/StudioServer/index.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
 							"path": [
-								"StudioServer",
+								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -1317,11 +1453,17 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "A series of calls for creating digital articles within Studio."
 		},
 		{
 			"name": "Misc",
 			"item": []
+		},
+		{
+			"name": "ConnectAutomate",
+			"item": [],
+			"description": "A series of calls for using the ConnectAutomate tool for working with layouts and creating PDF files."
 		}
 	],
 	"variable": [
