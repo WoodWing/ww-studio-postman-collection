@@ -18,17 +18,18 @@ The relationship between the Collection and the Environments is particularly hel
 In our environment, named 'WoodWing Studio', we have a variety of variables:
 
 1. ***Studio_Server_URL*** - Add to the body parameters as {{Studio_Server_URL}}
-2. ***User_Name*** - Add to the body parameters as {{User_Name}}
-3. ***Password*** - Add to the body parameters as {{Password}}
-4. ***Current_Ticket*** - Add to the body parameters as {{Current_Ticket}}
-5. ***Publication_ID*** - Add to the body parameters as {{Publication_ID}}
-6. ***Status_ID*** - Add to the body parameters as {{Status_ID}}
-7. ***Object_ID*** - Add to the body parameters as {{Object_ID}}
-8. ***Admin_User_Name*** - Add to the body parameters as {{Admin_User_Name}}
-9. ***Admin_User_Password*** - Add to the body parameters as {{Admin_User_Password}}
-10. ***Admin_Current_Ticket*** - Add to the body parameters as {{Admin_Current_Ticket}}
-11. ***FileUploadURL*** - Just a reference to '/transferindex.php' file
-12. ***Uuid_For_PUT*** - Variable to hold the UUID generated in the 'PUT' call 'Upload Transfer Server Request' to upload the file. Look in the 'Pre-request Script' area for the actual script.
+2. ***Studio_Server_Directory*** - Server Directory value after the URL
+3. ***User_Name*** - Add to the body parameters as {{User_Name}}
+4. ***Password*** - Add to the body parameters as {{Password}}
+5. ***Current_Ticket*** - Add to the body parameters as {{Current_Ticket}}
+6. ***Publication_ID*** - Add to the body parameters as {{Publication_ID}}
+7. ***Status_ID*** - Add to the body parameters as {{Status_ID}}
+8. ***Object_ID*** - Add to the body parameters as {{Object_ID}}
+9. ***Admin_User_Name*** - Add to the body parameters as {{Admin_User_Name}}
+10. ***Admin_User_Password*** - Add to the body parameters as {{Admin_User_Password}}
+11. ***Admin_Current_Ticket*** - Add to the body parameters as {{Admin_Current_Ticket}}
+12. ***FileUploadURL*** - Just a reference to '/transferindex.php' file
+13. ***Uuid_For_PUT*** - Variable to hold the UUID generated in the 'PUT' call 'Upload Transfer Server Request' to upload the file. Look in the 'Pre-request Script' area for the actual script.
 
 ***Flows***
 
@@ -43,7 +44,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.3 - Added Environment variables (Admin_User_Name, Admin_User_Password, Admin_Current_Ticket) to the Environment. Added 'CreateIssues' to the 'Administration' portion of the collection and did some work to clean up the other existing 'Administration' Requests.
  - v0.4 - Added 'SetObjectProperties' to the collection
  - v0.5 - Add some calls for a specific use case... creating a Digital Article. See the directory called 'Digital Articles'.
-The new calls are the following:  
+ - v0.6 - Added new calls: CreateObjects, SetObjectProperties for Custom Metadata, Admin API - GetUsers, GetUserGroups. Added Environment file to repository. Added variable to Environment for the Studio Directory value called 'Studio_Server_Directory'.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
@@ -67,32 +68,37 @@ Located in 'Digital Articles'
 
 ## Workflow (incomplete)
  1. LogOn
- 2. GetPublications
- 3. GetStates
- 4. QueryObjects
- 5. GetObjects
- 6. DeleteObjects
- 7. LogOff
- 8. GetUsersSettings
- 9. GetServerInfo
- 10. GetUserGroups
- 11. GetUserProfile
- 12. GetNamedQueries
- 13. CheckTicket
- 14. SetObjectProperties (added April 11, 2023)
+ 2. QueryObjects
+ 3. GetObjects
+ 4. CreateObjects
+ 5. SetObjectProperties
+ 6. SetObjectProperties Custom Metadata
+ 7. GetPublications
+ 8. GetStates
+ 11. DeleteObjects
+ 12. GetUsers
+ 13. GetServerInfo
+ 14. GetUserGroups
+ 18. GetUserProfile
+ 19. GetUserSettings
+ 20. GetNamedQueries
+ 21. CheckTicket
+ 23. LogOff
 
 ## Administration (incomplete)
  1. LogOn - Administration
- 2. CopyPublications
  3. GetIssues
  4. CreateIssues
- 5. LogOff - Administration
+ 5. CopyPublications
+ 6. GetUsers
+ 7. GetUserGroups
+ 8. LogOff - Administration
 
 ## System Administration (incomplete)
 
 ## Planning (incomplete)
- 3. LogOn - Planning
- 4. Create Layouts
+ 1. LogOn - Planning
+ 2. Create Layouts
  
 ## Webhooks
  1. LogOn
@@ -103,3 +109,15 @@ Located in 'Digital Articles'
  6. UpdateWebhookRegistration (added August 9, 2023)
  7. DeleteWebhookRegistration
  8. LogOff
+
+## Digital Articles
+ 1. Supporting Requests
+    a. Upload Transfer Server Request
+    b. Delete Transfer Server Request
+    c. Download Transfer Server Request
+ 2. QueryObjects Digital Article Templates
+ 3. CreateObjects Digital Article
+
+## Misc
+
+## ConnectAutomate
