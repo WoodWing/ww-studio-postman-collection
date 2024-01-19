@@ -18,7 +18,7 @@ The relationship between the Collection and the Environments is particularly hel
 In our environment, named 'WoodWing Studio', we have a variety of variables:
 
 1. ***Studio_Server_URL*** - Add to the body parameters as {{Studio_Server_URL}}
-2. ***Studio_Server_Directory*** - Server Directory value after the URL
+2. ***Studio_Server_Directory*** - Server Directory value after the URL. Noted as {{Studio_Server_Directory}}
 3. ***User_Name*** - Add to the body parameters as {{User_Name}}
 4. ***Password*** - Add to the body parameters as {{Password}}
 5. ***Current_Ticket*** - Add to the body parameters as {{Current_Ticket}}
