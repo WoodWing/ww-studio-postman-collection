@@ -223,7 +223,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
 							"host": [
 								"{{Studio_Server_URL}}"
 							],
