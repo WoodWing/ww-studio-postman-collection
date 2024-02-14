@@ -45,6 +45,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.4 - Added 'SetObjectProperties' to the collection
  - v0.5 - Add some calls for a specific use case... creating a Digital Article. See the directory called 'Digital Articles'.
  - v0.6 - Added new calls: CreateObjects, SetObjectProperties for Custom Metadata, Admin API - GetUsers, GetUserGroups. Added Environment file to repository. Added variable to Environment for the Studio Directory value called 'Studio_Server_Directory'.
+ - v0.7 - Fixed: The GetPublications call was using the wrong index for calling the service.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
