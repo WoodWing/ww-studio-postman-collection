@@ -229,7 +229,7 @@
 							],
 							"path": [
 								"{{Studio_Server_Directory}}",
-								"adminindex.php"
+								"index.php"
 							],
 							"query": [
 								{
@@ -717,6 +717,39 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"method\": \"GetUsers\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Admin_Current_Ticket}}\",\n\t\t\t\"RequestModes\": [],\n            \"GroupId\": null,\n            \"UserIds\":null,\n\t\t\t\"__classname__\": \"AdmGetUsersRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"adminindex.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModifyUsers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"ModifyUsers\",\n    \"id\": \"1\",\n    \"params\": {\n        \"req\": {\n            \"Ticket\": \"{{Admin_Current_Ticket}}\",\n            \"RequestModes\": [],\n            \"Users\": [\n                {\n                \"Id\": \"1\",\n                \"Name\": \"WoodWing\",\n                \"FullName\": \"<UserFullName>\",\n                \"EmailAddress\": \"jga@woodwing.com\",\n                \"Language\": \"enUS\", //<UserLanguage or this line can be removed if the default should be used>\n                \"__classname__\": \"AdmUser\"\n            }\n            ],\n            \"__classname__\": \"AdmModifyUsersRequest\"\n        }\n    },\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1459,11 +1492,6 @@
 		{
 			"name": "Misc",
 			"item": []
-		},
-		{
-			"name": "ConnectAutomate",
-			"item": [],
-			"description": "A series of calls for using the ConnectAutomate tool for working with layouts and creating PDF files."
 		}
 	],
 	"variable": [
