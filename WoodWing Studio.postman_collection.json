@@ -749,7 +749,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"ModifyUsers\",\n    \"id\": \"1\",\n    \"params\": {\n        \"req\": {\n            \"Ticket\": \"{{Admin_Current_Ticket}}\",\n            \"RequestModes\": [],\n            \"Users\": [\n                {\n                \"Id\": \"1\",\n                \"Name\": \"WoodWing\",\n                \"FullName\": \"<UserFullName>\",\n                \"EmailAddress\": \"jga@woodwing.com\",\n                \"Language\": \"enUS\", //<UserLanguage or this line can be removed if the default should be used>\n                \"__classname__\": \"AdmUser\"\n            }\n            ],\n            \"__classname__\": \"AdmModifyUsersRequest\"\n        }\n    },\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"ModifyUsers\",\n    \"id\": \"1\",\n    \"params\": {\n        \"req\": {\n            \"Ticket\": \"{{Admin_Current_Ticket}}\",\n            \"RequestModes\": [],\n            \"Users\": [\n                {\n                \"Id\": \"1\",\n                \"Name\": \"WoodWing\",\n                \"FullName\": \"<UserFullName>\",\n                \"EmailAddress\": \"jga@woodwing.com\",\n                \"Language\": \"enUS\", //<UserLanguage> or this line can be removed if the default should be used>\n                \"__classname__\": \"AdmUser\"\n            }\n            ],\n            \"__classname__\": \"AdmModifyUsersRequest\"\n        }\n    },\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1492,6 +1492,191 @@
 		{
 			"name": "Misc",
 			"item": []
+		},
+		{
+			"name": "Print Articles",
+			"item": [
+				{
+					"name": "Supporting Requests",
+					"item": [
+						{
+							"name": "Upload Transfer Server Request",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate a random UUID",
+											"const random_uuid = uuidv4();",
+											"  ",
+											"function uuidv4() {",
+											"    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'",
+											"    .replace(/[xy]/g, function (c) {",
+											"        const r = Math.random() * 16 | 0, ",
+											"            v = c == 'x' ? r : (r & 0x3 | 0x8);",
+											"        return v.toString(16);",
+											"    });",
+											"}",
+											"pm.environment.set(\"Uuid_For_PUT\", random_uuid);",
+											"",
+											"// Print the UUID",
+											"console.log(random_uuid);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {
+										"src": "testfile.json"
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Transfer Server Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&httpmethod=DELETE",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										},
+										{
+											"key": "httpmethod",
+											"value": "DELETE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download Transfer Server Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/{{FileUploadUrl}}?ticket={{Current_Ticket}}&fileguid={{Uuid_For_PUT}}&format=application/ww-digital+json&httpmethod=GET",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"{{FileUploadUrl}}"
+									],
+									"query": [
+										{
+											"key": "ticket",
+											"value": "{{Current_Ticket}}"
+										},
+										{
+											"key": "fileguid",
+											"value": "{{Uuid_For_PUT}}"
+										},
+										{
+											"key": "format",
+											"value": "application/ww-digital+json"
+										},
+										{
+											"key": "httpmethod",
+											"value": "GET"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CreateObjects Print Article",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {\n                    \"MetaData\": {\n                        \"BasicMetaData\": {\n                            \"Name\": \"testfile-print-2\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": 40,\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Article\",\n                            \"Publication\": {\n                                \"Id\": \"25\",\n                                \"Name\": \"WoodWing\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"328\",\n                                \"Name\": \"Draft\",\n                                \"Type\": \"Article\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\",\n                            \"Format\": \"application/incopyicml\"\n                        },\n                        \"ExtraMetaData\": [\n                        ],\n                        \"__classname__\": \"MetaData\"\n                    },\n                    \"Relations\": [\n                    ],\n                    \"Pages\": [\n                    ],\n                    \"Files\": [\n                        {\n                            \"Rendition\": \"native\",\n                            \"Type\": \"application/incopyicml\",\n                            \"FileUrl\": \"{{Studio_Server_URL}}/transferindex.php?fileguid={{Uuid_For_PUT}}\",\n                            \"__classname__\": \"Attachment\"\n                        }\n                    ],\n                    \"Elements\": [\n                        {\n                            \"ID\": \"fadca487-ff25-45eb-afb0-2bcd3cf0b6e1\",\n                            \"Name\":\"Body\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the body for this article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the body for this article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"b970882c-e51d-4e41-b46c-98ba0d672813\",\n                            \"Name\":\"Caption\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the caption of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the caption of the article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"d2db18e0-a5ea-405a-ae14-69634020460e\",\n                            \"Name\":\"Credit\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the credit of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the credit of the article\",\n                            \"__classname__\": \"Element\"\n                        },{\n                            \"ID\": \"b3e69023-2a75-4c01-aa65-d742f1d32b57\",\n                            \"Name\":\"Crosshead\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the crosshead of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the crosshead of the article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"d2a6831d-3318-48c6-995e-9fd3e00c56e4\",\n                            \"Name\":\"Footer\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the footer of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the footer of the article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"04611380-241b-4a41-a0f9-0abae930608a\",\n                            \"Name\":\"Graphic\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the graphic of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the graphic of the article\",\n                            \"__classname__\": \"Element\"\n                        },{\n                            \"ID\": \"c9df829f-f219-4e38-8b7b-1f3473409c8f\",\n                            \"Name\":\"Head\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the head of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the head of the article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"4cdab709-9a4f-4b0a-909e-97092bd81143\",\n                            \"Name\":\"Highlight\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the highlight of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the highlight of the article\",\n                            \"__classname__\": \"Element\"\n                        },\n                        {\n                            \"ID\": \"34f3df72-5c68-4e76-a594-adc0ea7f3ffb\",\n                            \"Name\":\"Subhead\",\n                            \"LengthWords\": 7,\n                            \"LengthChars\": 33,\n                            \"LengthParas\": 1,\n                            \"LengthLines\": 1,\n                            \"Snippet\": \"This is the subhead of the article\",\n                            \"Version\": \"1\",\n                            \"Content\": \"This is the subhead of the article\",\n                            \"__classname__\": \"Element\"\n                        }\n                    ],\n                    \"Targets\": [\n                    ],\n                    \"MessageList\":{\n                    },\n                    \"ObjectLabels\":[\n                    ],\n                    \"InDesignArticles\":[\n                    ],\n                    \"Placements\":[\n                    ],\n                    \"__classname__\": \"Object\"\n                }\n            ],\n            \"ReplaceGUIDs\": true\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [
