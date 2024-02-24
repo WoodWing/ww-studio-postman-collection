@@ -123,6 +123,11 @@ Located in 'Digital Articles'
  2. QueryObjects Digital Article Templates
  3. CreateObjects Digital Article
 
+Video - Using the Postman Collection to create a digital article
+https://github.com/WoodWing/ww-studio-postman-collection/assets/43406765/37b8c46d-8ade-4b68-a0be-dc9fb1664a15
+
+
+
 ## Misc
 
 ## ConnectAutomate
