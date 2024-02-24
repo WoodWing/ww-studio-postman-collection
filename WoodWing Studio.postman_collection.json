@@ -570,6 +570,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Unlock Objects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"UnlockObjects\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Current_Ticket}}\",\n                \"IDs\": [ \"{{Object_ID}}\" ],\n                \"ReadMessageIDs\": \"\",\n                \"MessageList\": null,\n                \"__classname__\": \"WflUnlockRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1460,7 +1493,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {    \n                    \"MetaData\": {  \n                        \"BasicMetaData\": {\n                            \"Name\": \"testfile\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": 1,\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Article\",\n                            \"Publication\": {\n                                \"Id\": \"1\",\n                                \"Name\": \"WW News\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"1\",\n                                \"Name\": \"Draft\",\n                                \"Type\": \"Article\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\",\n                            \"Format\": \"application/ww-digital+json\"\n                        },\n                        \"ExtraMetaData\": [\n                        \t{\n\t\t\t\t\t\t\t\t\"Property\": \"C_CS_FILEFORMATVERSION\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"2.4\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"Property\": \"C_CS_COMPONENTSET\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"df0afd50-9e44-4882-8324-d6e31432ce90\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t],\n                    \t\"__classname__\": \"MetaData\"\n                    },\n                    \"Files\": [\n                        {\n                            \"Rendition\": \"native\",\n                            \"Type\": \"application/ww-digital+json\",\n                            \"FileUrl\": \"{{Studio_Server_URL}}/transferindex.php?fileguid={{Uuid_For_PUT}}\",\n                            \"__classname__\": \"Attachment\"\n                        }\n                    ],\n                \"__classname__\": \"Object\"\n                }\n                \n            ]\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {    \n                    \"MetaData\": {  \n                        \"BasicMetaData\": {\n                            \"Name\": \"test digital article file\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": \"40\",\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Article\",\n                            \"Publication\": {\n                                \"Id\": \"25\",\n                                \"Name\": \"WoodWing\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"328\",\n                                \"Name\": \"Draft\",\n                                \"Type\": \"Article\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\",\n                            \"Format\": \"application/ww-digital+json\"\n                        },\n                        \"ExtraMetaData\": [\n                        \t{\n\t\t\t\t\t\t\t\t\"Property\": \"C_CS_FILEFORMATVERSION\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"2.4\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"Property\": \"C_CS_COMPONENTSET\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"df0afd50-9e44-4882-8324-d6e31432ce90\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t],\n                    \t\"__classname__\": \"MetaData\"\n                    },\n                    \"Files\": [\n                        {\n                            \"Rendition\": \"native\",\n                            \"Type\": \"application/ww-digital+json\",\n                            \"FileUrl\": \"{{Studio_Server_URL}}/transferindex.php?fileguid={{Uuid_For_PUT}}\",\n                            \"__classname__\": \"Attachment\"\n                        }\n                    ],\n                \"__classname__\": \"Object\"\n                }\n                \n            ]\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
