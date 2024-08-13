@@ -10,6 +10,218 @@
 			"name": "Workflow",
 			"item": [
 				{
+					"name": "CreateObjects",
+					"item": [
+						{
+							"name": "CreateObjects Digital Article",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {    \n                    \"MetaData\": {  \n                        \"BasicMetaData\": {\n                            \"Name\": \"test digital article file\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": \"40\",\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Article\",\n                            \"Publication\": {\n                                \"Id\": \"25\",\n                                \"Name\": \"WoodWing\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"328\",\n                                \"Name\": \"Draft\",\n                                \"Type\": \"Article\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\",\n                            \"Format\": \"application/ww-digital+json\"\n                        },\n                        \"ExtraMetaData\": [\n                        \t{\n\t\t\t\t\t\t\t\t\"Property\": \"C_CS_FILEFORMATVERSION\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"2.4\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"Property\": \"C_CS_COMPONENTSET\",\n\t\t\t\t\t\t\t\t\"Values\": [\n\t\t\t\t\t\t\t\t\t\"df0afd50-9e44-4882-8324-d6e31432ce90\"\n\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\"__classname__\": \"ExtraMetaData\"\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t],\n                    \t\"__classname__\": \"MetaData\"\n                    },\n                    \"Files\": [\n                        {\n                            \"Rendition\": \"native\",\n                            \"Type\": \"application/ww-digital+json\",\n                            \"FileUrl\": \"{{Studio_Server_URL}}/transferindex.php?fileguid={{Uuid_For_PUT}}\",\n                            \"__classname__\": \"Attachment\"\n                        }\n                    ],\n                \"__classname__\": \"Object\"\n                }\n                \n            ]\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateObjects Task",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Lock\": false,\n            \"Objects\": [\n                {    \n                    \"MetaData\": {  \n                        \"BasicMetaData\": {\n                            \"Name\": \"test task\",\n                            \"Category\": {\n                                \"Name\": \"News\",\n                                \"Id\": \"40\",\n                                \"__classname__\": \"Category\"\n                            },\n                            \"Type\": \"Task\",\n                            \"Publication\": {\n                                \"Id\": \"25\",\n                                \"Name\": \"WoodWing\",\n                                \"__classname__\": \"Publication\"\n                            },\n                            \"__classname__\": \"BasicMetaData\"\n                        },\n                        \"WorkflowMetaData\": {\n                            \"__classname__\": \"WorkflowMetaData\",\n                            \"Comment\": \"Gapp\",\n                            \"State\": {\n                                \"Id\": \"351\",\n                                \"Name\": \"Assigned\",\n                                \"Type\": \"Task\",\n                                \"__classname__\": \"State\"\n                            }\n                        },\n                        \"RightsMetaData\": {\n                            \"__classname__\": \"RightsMetaData\"\n                        },\n                        \"SourceMetaData\": {\n                            \"__classname__\": \"SourceMetaData\"\n                        },\n                        \"ContentMetaData\": {\n                            \"__classname__\": \"ContentMetaData\"\n                        },\n                        \"ExtraMetaData\": [\n\t\t\t\t\t\t],\n                    \t\"__classname__\": \"MetaData\"\n                    },\n                    \"Files\": [],\n                \"__classname__\": \"Object\"\n                }\n                \n            ]\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CreateObjectOperations",
+					"item": [
+						{
+							"name": "PlaceDossier - PrintArticle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13129\", //objectId of layout\n                \"Version\": \"0.66\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03a\", //generated GUID\n                    \"Name\": \"PlaceDossier\", //Name of operation: PlaceDossier, PlaceImage, PlaceArticleElement, ClearFrameContent, PlaceDigitalArticle\n                    \"Type\": \"AutomatedPrintWorkflow\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"DossierId\",\n                            \"Value\": 13130,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"InDesignArticleId\",\n                            \"Value\": 733,\n                            \"__classname__\": \"Param\"\n                        }\n                    ],\n                    \"__classname__\": \"ObjectOperation\"\n                }\n            ]\n        }\n                \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								},
+								"description": "### CreateObjectOperations Request\n\nThis endpoint allows you to create object operations using the specified parameters.\n\n#### Description\n\nThis call takes the ID and version of the layout that you want to place the article onto plus the ID of the Dossier AND the InDesign article ID and put an article in the Dossier onto the layout. Note that\n\n#### Request Body\n\n- `jsonrpc` (string): The JSON-RPC version being used.\n    \n- `method` (string): The method to be executed, in this case, \"CreateObjectOperations\".\n    \n- `id` (string): The identifier for the request.\n    \n- `params` (array): An array containing the parameters for creating object operations, including the ticket, version, and operations.\n    \n\n#### Operations\n\n- `Ticket` (string): The current ticket for authentication.\n    \n- `HaveVersion` (object): Contains the ID, version, and class name of the layout.\n    \n- `Operations` (array): An array of operations to be performed, including the ID, name, type, and parameters.\n    \n\n#### Response\n\nThe response will be in JSON format and will include the following schema:\n\n``` json\n{\n  \"id\": \"\",\n  \"result\": {\n    \"Operations\": [\n      {\n        \"Id\": \"\",\n        \"Name\": \"\",\n        \"Type\": \"\",\n        \"Params\": [\n          {\n            \"Name\": \"\",\n            \"Value\": 0,\n            \"__classname__\": \"\"\n          }\n        ],\n        \"__classname__\": \"\"\n      }\n    ],\n    \"Reports\": [],\n    \"__classname__\": \"\"\n  },\n  \"jsonrpc\": \"\"\n}\n\n ```\n\nThe response will contain the ID, name, type, and parameters of the operations performed."
+							},
+							"response": []
+						},
+						{
+							"name": "PlaceArticleElement",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13129\", //objectId of layout\n                \"Version\": \"0.50\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03a\", //generated GUID\n                    \"Name\": \"PlaceArticleElement\", \n                    \"Type\": \"AutomatedPrintWorkflow\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ArticleId\",\n                            \"Value\": 13130,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ElementId\",\n                            \"Value\": 733,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"SplineId\",\n                            \"Value\": 733,\n                            \"__classname__\": \"Param\"\n                        }\n                    ],\n                    \"__classname__\": \"ObjectOperation\"\n                }\n            ]\n        }\n                \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								},
+								"description": "This HTTP POST request is used to create object operations by sending a JSON payload to the specified endpoint. The request body includes parameters such as \"jsonrpc\", \"method\", \"id\", and \"params\" to specify the ticket, object version, operations, and their respective parameters.\n\n### Request Body\n\n- `jsonrpc` (string): The JSON-RPC version.\n    \n- `method` (string): The method for creating object operations.\n    \n- `id` (string): The identifier for the request.\n    \n- `params` (array): An array containing the ticket, object version, and operations details.\n    \n    - `Ticket` (string): The current ticket.\n        \n    - `HaveVersion` (object): Contains the ID, version, and class name of the object version.\n        \n        - `ID` (string): The object ID of the layout.\n            \n        - `Version` (string): The object version.\n            \n        - `__classname__` (string): The class name of the object version.\n            \n    - `Operations` (array): An array of operations details.\n        \n        - `Id` (string): The generated GUID for the operation.\n            \n        - `Name` (string): The name of the operation.\n            \n        - `Type` (string): The type of the operation, which can be \"AutomatedPrintWorkflow\" or \"ContentStationDigitalEditor\".\n            \n        - `Params` (array): An array of parameters for the operation.\n            \n            - `Name` (string): The name of the parameter.\n                \n            - `Value` (string/number): The value of the parameter.\n                \n            - `__classname__` (string): The class name of the parameter.\n                \n\n### Response Body\n\nThe response body for this request will contain the result of the object operations creation, including any relevant data or error messages."
+							},
+							"response": []
+						},
+						{
+							"name": "PlaceImage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13129\", //objectId of layout\n                \"Version\": \"0.56\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03b\", //generated GUID\n                    \"Name\": \"PlaceImage\", //Name of operation: PlaceDossier, PlaceImage, PlaceArticleElement, ClearFrameContent, PlaceDigitalArticle\n                    \"Type\": \"AutomatedPrintWorkflow\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ImageId\",\n                            \"Value\": 13136,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"SplineId\",\n                            \"Value\": 961,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ContentDx\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ContentDy\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ScaleX\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                                                {\n                            \"Name\": \"ScaleY\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        }\n                    ],\n                    \"__classname__\": \"ObjectOperation\"\n                }\n            ]\n        }\n                \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								},
+								"description": "### CreateObjectOperations\n\nThis endpoint is used to create object operations with the provided parameters.\n\n#### Request\n\n- Method: POST\n    \n- URL: `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON`\n    \n- Headers:\n    \n    - Content-Type: application/json\n        \n- Body:\n    \n    - { \"jsonrpc\": \"2.0\", \"method\": \"CreateObjectOperations\", \"id\": \"33\", \"params\": \\[ { \"Ticket\": \"{{Current_Ticket}}\", \"HaveVersion\": { \"ID\": \"13129\", \"Version\": \"0.56\", \"__classname__\": \"ObjectVersion\" }, \"Operations\": \\[ { \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03b\", \"Name\": \"PlaceImage\", \"Type\": \"AutomatedPrintWorkflow\", \"Params\": \\[ { \"Name\": \"EditionId\", \"Value\": 0, \"__classname__\": \"Param\" }, { \"Name\": \"ImageId\", \"Value\": 13136, \"__classname__\": \"Param\" }, { \"Name\": \"SplineId\", \"Value\": 961, \"__classname__\": \"Param\" }, { \"Name\": \"ContentDx\", \"Value\": 0, \"__classname__\": \"Param\" }, { \"Name\": \"ContentDy\", \"Value\": 0, \"__classname__\": \"Param\" }, { \"Name\": \"ScaleX\", \"Value\": 0, \"__classname__\": \"Param\" }, { \"Name\": \"ScaleY\", \"Value\": 0, \"__classname__\": \"Param\" } \\], \"__classname__\": \"ObjectOperation\" } \\] } \\]}\n        \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- { \"type\": \"object\", \"properties\": { \"id\": {\"type\": \"string\"}, \"result\": { \"type\": \"object\", \"properties\": { \"Operations\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"Id\": {\"type\": \"string\"}, \"Name\": {\"type\": \"string\"}, \"Type\": {\"type\": \"string\"}, \"Params\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"Name\": {\"type\": \"string\"}, \"Value\": {\"type\": \"number\"}, \"__classname__\": {\"type\": \"string\"} } } }, \"__classname__\": {\"type\": \"string\"} } } }, \"Reports\": {\"type\": \"array\"}, \"__classname__\": {\"type\": \"string\"} } }, \"jsonrpc\": {\"type\": \"string\"} } }"
+							},
+							"response": []
+						},
+						{
+							"name": "Clear Frame Content",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13129\", //objectId of layout\n                \"Version\": \"0.18\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03a\", //generated GUID\n                    \"Name\": \"ClearFrameContent\", //Name of operation: PlaceDossier, PlaceImage, PlaceArticleElement, ClearFrameContent, PlaceDigitalArticle\n                    \"Type\": \"AutomatedPrintWorkflow\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"SplineId\",\n                            \"Value\": 703,\n                            \"__classname__\": \"Param\"\n                        }\n                    ],\n                    \"__classname__\": \"ObjectOperation\"\n                }\n            ]\n        }\n                \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								},
+								"description": "### CreateObjectOperations\n\nThis endpoint is used to create object operations with the provided parameters.\n\n#### Request Body\n\n- `jsonrpc` (string): The JSON-RPC version.\n    \n- `method` (string): The method name, in this case, \"CreateObjectOperations\".\n    \n- `id` (string): The ID of the request.\n    \n- `params` (array): An array of parameters containing the ticket, version, and operations details.\n    \n\nExample:\n\n``` json\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"CreateObjectOperations\",\n  \"id\": \"33\",\n  \"params\": [\n    {\n      \"Ticket\": \"{{Current_Ticket}}\",\n      \"HaveVersion\": {\n        \"ID\": \"13129\",\n        \"Version\": \"0.18\",\n        \"__classname__\": \"ObjectVersion\"\n      },\n      \"Operations\": [\n        {\n          \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03a\",\n          \"Name\": \"ClearFrameContent\",\n          \"Type\": \"AutomatedPrintWorkflow\",\n          \"Params\": [\n            {\n              \"Name\": \"EditionId\",\n              \"Value\": 0,\n              \"__classname__\": \"Param\"\n            },\n            {\n              \"Name\": \"SplineId\",\n              \"Value\": 703,\n              \"__classname__\": \"Param\"\n            }\n          ],\n          \"__classname__\": \"ObjectOperation\"\n        }\n      ]\n    }\n  ]\n}\n\n ```\n\n#### Response\n\n- `id` (string): The ID of the response.\n    \n- `result` (object): The result object containing operations and reports.\n    \n    - `Operations` (array): An array of operations with their details.\n        \n    - `Reports` (array): An array of reports.\n        \n    - `__classname__` (string): The class name of the result object.\n        \n- `jsonrpc` (string): The JSON-RPC version.\n    \n\nExample:\n\n``` json\n{\n  \"id\": \"\",\n  \"result\": {\n    \"Operations\": [\n      {\n        \"Id\": \"\",\n        \"Name\": \"\",\n        \"Type\": \"\",\n        \"Params\": [\n          {\n            \"Name\": \"\",\n            \"Value\": 0,\n            \"__classname__\": \"\"\n          }\n        ],\n        \"__classname__\": \"\"\n      }\n    ],\n    \"Reports\": [],\n    \"__classname__\": \"\"\n  },\n  \"jsonrpc\": \"\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "LogOn",
 					"request": {
 						"method": "POST",
@@ -83,40 +295,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"{{Studio_Server_Directory}}",
-								"index.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CreateObjects",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"CreateObjects\",\n    \"id\": \"2\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"Lock\": false,\n        \"Objects\":[{\n            \"Object\": {\n                \"MetaData\": {\n                  \"BasicMetaData\": {\n                  \"ID\": null,\n                  \"DocumentID\": null,\n                  \"Name\": \"test article\",\n                  \"Type\": \"Article\",\n                  \"Publication\": {\n                    \"Id\": \"25\",\n                    \"Name\": \"WoodWing\"\n                  },\n                  \"Category\": null,\n                  \"MasterId\": null,\n                  \"StoryId\": null,\n                  \"__classname__\": \"BasicMetaData\"\n                },\n                \"RightsMetaData\": {\n                  \"CopyrightMarked\": false,\n                  \"Copyright\": null,\n                  \"CopyrightURL\": null,\n                  \"__classname__\": \"WorkflowMetaData\"\n                },\n                \"SourceMetaData\": {\n                  \"Credit\": null,\n                  \"Source\": null,\n                  \"Author\": null,\n                  \"__classname\": \"SourceMetaData\"\n                },\n                \"ContentMetaData\": {\n                  \"Description\": null,\n                  \"DescriptionAuthor\": null,\n                  \"Keywords\": [],\n                  \"Slugline\": null,\n                  \"Format\": null,\n                  \"Columns\": null,\n                  \"Width\": null,\n                  \"Height\": null,\n                  \"Dpi\": null,\n                  \"LengthWords\": null,\n                  \"LengthChars\": null,\n                  \"LengthParas\": null,\n                  \"LengthLines\": null,\n                  \"PlainContent\": null,\n                  \"FileSize\": null,\n                  \"ColorSpace\": null,\n                  \"HighResFile\": null,\n                  \"Encoding\": null,\n                  \"Compression\": null,\n                  \"KeyFrameEveryFrames\": null,\n                  \"Channels\": null,\n                  \"AspectRatio\": null,\n                  \"Orientation\": null,\n                  \"__classname\": \"ContentMetaData\"\n                },\n                \"WorkflowMetaData\": {\n                  \"Urgency\": null,\n                  \"Modifier\": null,\n                  \"Modified\": null,\n                  \"Creator\": null,\n                  \"Created\": null,\n                  \"Comment\": \"This is my comment 2\",\n                  \"State\": {\n                    \"Id\": \"328\",\n                    \"Name\": \"Draft\",\n                    \"Type\": \"Article\",\n                    \"Produce\": false,\n                    \"Color\": null,\n                    \"DefaultRouteTo\": \"\"\n                  },\n                  \"RouteTo\": null,\n                  \"LockedBy\": null,\n                  \"Version\" : null,\n                  \"DeadlineSoft\": null,\n                  \"Rating\": null,\n                  \"Deletor\": null,\n                  \"Deleted\": null,\n                  \"__classname__\": \"WorkflowMetaData\"\n                },\n                \"ExtraMetaData\": null,\n                  \"__classname__\": \"MetaData\"\n                },\n                \"Relations\": [],\n                \"Pages\":[],\n                \"Files\":[{\n                  \"Attachment\": {\n                      \"Rendition\": \"Native\",\n                      \"Type\": \"application\\/ww-digital+json\",\n                      \"Content\": null,\n                      \"FilePath\": null,\n                      \"FileUrl\": \"{{FileUploadUrl}}\",\n                      \"EditionId\": null,\n                      \"ContentSourceFileLink\": null,\n                      \"ContentSourceProxyLink\": null\n                  }\n                }],\n                \"Messages\": [],\n                \"Elements\": [],\n                \"Targets\":[],\n                \"Renditions\": [],\n                \"MessageList\": null,\n                \"ObjectLabels\": [],\n                \"InDesignArticles\": [],\n                \"Placements\": [],\n                \"Operations\": []\n            }\n         }],\n          \"Messages\": [],\n          \"AutoNaming\": false,\n          \"Areas\": null,\n          \"ReplaceGUIDs\": \"false\",\n          \"__classname__\": \"WflCreateObjectsRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\",\n                \"InDesignArticles\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -539,6 +718,39 @@
 					"response": []
 				},
 				{
+					"name": "UnlockObjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"UnlockObjects\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Current_Ticket}}\",\n                \"IDs\": [ \"{{Object_ID}}\" ],\n                \"ReadMessageIDs\": \"\",\n                \"MessageList\": null,\n                \"__classname__\": \"WflUnlockRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "LogOff",
 					"request": {
 						"method": "POST",
@@ -559,39 +771,6 @@
 							],
 							"path": [
 								"StudioServer",
-								"index.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Unlock Objects",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"UnlockObjects\",\n    \"id\": \"1\",\n    \"params\": [{                \n                \"Ticket\": \"{{Current_Ticket}}\",\n                \"IDs\": [ \"{{Object_ID}}\" ],\n                \"ReadMessageIDs\": \"\",\n                \"MessageList\": null,\n                \"__classname__\": \"WflUnlockRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"{{Studio_Server_Directory}}",
 								"index.php"
 							],
 							"query": [
@@ -1301,7 +1480,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "List of available webhooks:  \n  \nObject event\n\nCreated\n\nCreates a new object in the workflow.\n\nMoved to Trash Can\n\nMoves an object from the workflow to the Trash Can.\n\nDeleted\n\nDeletes an object permanently (from the workflow or Trash Can).\n\nRestored\n\nRestores a deleted object from the Trash Can (back into the workflow).\n\nCopied\n\nCreates a new object by copying an existing object.\n\nSaved\n\nSaves a new file version for an object.\n\nModified\n\nChanges the properties of an object using the Properties dialog."
 		},
 		{
 			"name": "Digital Articles",
