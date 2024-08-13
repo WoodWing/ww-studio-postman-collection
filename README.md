@@ -1,5 +1,5 @@
 # Introduction
-This is a Postman collection for working with WoodWing Studio. The collection itself contains, at this time, a subset of the available API calls. Those that are included in the collection are noted below. All of the Studio API documentation can be found in the SDK doc
+This is a Postman collection for working with WoodWing Studio. The collection itself contains, at this time, a subset of the available API calls. Those that are included in the collection are noted below. All of the Studio API documentation can be found in the SDK docs.
 
 In some cases we have added parameters to the calls so that they may be more useful as a starting point.
 
@@ -49,6 +49,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.8 - Added: ModifyUsersRequest has been added to the Administration calls.
  - v0.9 - Added: Create Print article section within the collection.
  - v0.10 - Added: UnlockObjects call to the collection, added video showing how to use the 'Create Digital Article' portion of the collection.
+ - v0.11 - Added: Workflow > CreateObjectOperations folder with calls for PlaceDossier, PlaceArticleElement, PlaceImage and ClearFrameContent
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
@@ -71,24 +72,31 @@ Located in 'Digital Articles'
 ## A list of Calls contained within the collection
 
 ## Workflow (incomplete)
- 1. LogOn
- 2. QueryObjects
- 3. GetObjects
- 4. CreateObjects
- 5. SetObjectProperties
- 6. SetObjectProperties Custom Metadata
- 7. GetPublications
- 8. GetStates
- 11. DeleteObjects
- 12. GetUsers
- 13. GetServerInfo
- 14. GetUserGroups
- 18. GetUserProfile
- 19. GetUserSettings
- 20. GetNamedQueries
- 21. CheckTicket
- 22. UnlockObjects
- 23. LogOff
+ 1. [Folder] CreateObjects
+    - CreateObjects Digital Article
+    - CreateObjects Task
+ 2. [Folder] CreateObjectOperations
+    - PlaceDossier - Print Article
+    - PlaceArticleElement
+    - PlaceImage
+    - ClearFrameContent
+ 3. LogOn
+ 4. QueryObjects
+ 5. GetObjects
+ 6. SetObjectProperties
+ 7. SetObjectProperties Custom Metadata
+ 8. GetPublications
+ 9. GetStates
+ 10. DeleteObjects
+ 11. GetUsers
+ 12. GetServerInfo
+ 13. GetUserGroups
+ 14. GetUserProfile
+ 15. GetUserSettings
+ 16. GetNamedQueries
+ 17. CheckTicket
+ 18. UnlockObjects
+ 19. LogOff
 
 ## Administration (incomplete)
  1. LogOn - Administration
@@ -125,8 +133,6 @@ Located in 'Digital Articles'
 
 Video - Using the Postman Collection to create a digital article
 https://github.com/WoodWing/ww-studio-postman-collection/assets/43406765/37b8c46d-8ade-4b68-a0be-dc9fb1664a15
-
-
 
 ## Misc
 
