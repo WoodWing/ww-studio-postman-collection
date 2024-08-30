@@ -50,6 +50,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.9 - Added: Create Print article section within the collection.
  - v0.10 - Added: UnlockObjects call to the collection, added video showing how to use the 'Create Digital Article' portion of the collection.
  - v0.11 - Added: Workflow > CreateObjectOperations folder with calls for PlaceDossier, PlaceArticleElement, PlaceImage and ClearFrameContent
+ - v0.12 - Added: New sample call that creates a Task with Targets (CreateObjects Task with Targets), Added new folder called 'Objects and Targets' and added a call to that folder called 'CreateObjectTargets'
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
