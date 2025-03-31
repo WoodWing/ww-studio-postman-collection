@@ -51,6 +51,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.10 - Added: UnlockObjects call to the collection, added video showing how to use the 'Create Digital Article' portion of the collection.
  - v0.11 - Added: Workflow > CreateObjectOperations folder with calls for PlaceDossier, PlaceArticleElement, PlaceImage and ClearFrameContent
  - v0.12 - Added: New sample call that creates a Task with Targets (CreateObjects Task with Targets), Added new folder called 'Objects and Targets' and added a call to that folder called 'CreateObjectTargets'
+ - v0.13 - Added: Connect Webhooks. These calls are here to show how to create Webhooks using the new Connect Webhooks feature. Note that this feature will not be available until May 2025
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
@@ -113,7 +114,17 @@ Located in 'Digital Articles'
 ## Planning (incomplete)
  1. LogOn - Planning
  2. Create Layouts
- 
+
+## Connect Webhooks
+ 1. LogOn
+ 2. GetTriggerOptions
+ 3. ListWebhookRegistrations
+ 4. CreateWebhookRegistration
+ 5. GetWebhookRegistration
+ 6. UpdateWebhookRegistration
+ 7. DeleteWebhookRegistration
+ 8. LogOff
+    
 ## Webhooks
  1. LogOn
  2. GetTriggerOptions
@@ -134,7 +145,3 @@ Located in 'Digital Articles'
 
 Video - Using the Postman Collection to create a digital article
 https://github.com/WoodWing/ww-studio-postman-collection/assets/43406765/37b8c46d-8ade-4b68-a0be-dc9fb1664a15
-
-## Misc
-
-## ConnectAutomate
