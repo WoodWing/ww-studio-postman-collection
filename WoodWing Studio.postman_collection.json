@@ -41,12 +41,57 @@
 											"value": "JSON"
 										}
 									]
-								}
+								},
+								"description": "This HTTP POST request is used to create objects by sending a payload to the specified endpoint. The request is made to the {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON URL with a JSON payload in the raw request body.\n\n### Request Body\n\n- method (string): Specifies the method as \"CreateObjects\".\n    \n- id (string): Represents the ID as \"33\".\n    \n- params (array): Contains an array of parameters including \"Ticket\", \"Lock\", and \"Objects\".\n    \n    - Ticket (string): Represents the ticket value, which is a placeholder.\n        \n    - Lock (boolean): Indicates whether the object is locked or not.\n        \n    - Objects (array): Contains an array of objects with metadata and files.\n        \n        - MetaData (object): Contains various metadata properties such as BasicMetaData, WorkflowMetaData, RightsMetaData, SourceMetaData, ContentMetaData, and ExtraMetaData.\n            \n        - Files (array): Contains an array of files with properties like Rendition, Type, and FileUrl.\n            \n    - jsonrpc (string): Specifies the JSON-RPC version as \"2.0\".\n        \n\n### Response\n\nThe response to this request will contain the result of the \"CreateObjects\" method call, along with any relevant data or error messages."
 							},
 							"response": []
 						},
 						{
 							"name": "CreateObjects Task with Targets",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Content-Type header is 'application/json'\", function () {",
+											"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include('application/json');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Validate the structure of the 'result' object\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.result).to.exist.and.to.be.an('object');",
+											"",
+											"    // Additional checks for specific properties within the 'result' object can be added here",
+											"});",
+											"",
+											"",
+											"pm.test(\"Objects array is present and contains expected number of elements\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.result.Objects).to.be.an('array');",
+											"    pm.expect(responseData.result.Objects).to.have.lengthOf(1);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"  pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -92,6 +137,40 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13129\", //objectId of layout\n                \"Version\": \"0.69\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03a\", //generated GUID\n                    \"Name\": \"PlaceDossier\", //Name of operation: PlaceDossier, PlaceImage, PlaceArticleElement, ClearFrameContent, PlaceDigitalArticle\n                    \"Type\": \"AutomatedPrintWorkflow\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": 0,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"DossierId\",\n                            \"Value\": 13130,\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"InDesignArticleId\",\n                            \"Value\": 733,\n                            \"__classname__\": \"Param\"\n                        }\n                    ],\n                    \"__classname__\": \"ObjectOperation\"\n                }\n            ]\n        }\n                \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+									"host": [
+										"{{Studio_Server_URL}}"
+									],
+									"path": [
+										"{{Studio_Server_Directory}}",
+										"index.php"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "JSON"
+										}
+									]
+								},
+								"description": "### CreateObjectOperations Request\n\nThis endpoint allows you to create object operations using the specified parameters.\n\n#### Description\n\nThis call takes the ID and version of the layout that you want to place the article onto plus the ID of the Dossier AND the InDesign article ID and put an article in the Dossier onto the layout. Note that\n\n#### Request Body\n\n- `jsonrpc` (string): The JSON-RPC version being used.\n    \n- `method` (string): The method to be executed, in this case, \"CreateObjectOperations\".\n    \n- `id` (string): The identifier for the request.\n    \n- `params` (array): An array containing the parameters for creating object operations, including the ticket, version, and operations.\n    \n\n#### Operations\n\n- `Ticket` (string): The current ticket for authentication.\n    \n- `HaveVersion` (object): Contains the ID, version, and class name of the layout.\n    \n- `Operations` (array): An array of operations to be performed, including the ID, name, type, and parameters.\n    \n\n#### Response\n\nThe response will be in JSON format and will include the following schema:\n\n``` json\n{\n  \"id\": \"\",\n  \"result\": {\n    \"Operations\": [\n      {\n        \"Id\": \"\",\n        \"Name\": \"\",\n        \"Type\": \"\",\n        \"Params\": [\n          {\n            \"Name\": \"\",\n            \"Value\": 0,\n            \"__classname__\": \"\"\n          }\n        ],\n        \"__classname__\": \"\"\n      }\n    ],\n    \"Reports\": [],\n    \"__classname__\": \"\"\n  },\n  \"jsonrpc\": \"\"\n}\n\n ```\n\nThe response will contain the ID, name, type, and parameters of the operations performed."
+							},
+							"response": []
+						},
+						{
+							"name": "PlaceDigitalArticle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"CreateObjectOperations\",\n    \"id\": \"33\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"HaveVersion\": {\n                \"ID\": \"13686\", //objectId of layout\n                \"Version\": \"0.2\", //object version\n                \"__classname__\": \"ObjectVersion\"\n            },\n            \"Operations\": [\n                {\n                    \"__classname__\": \"ObjectOperation\",\n                    \"Id\": \"10be2025-9e15-4a4d-8af0-899808b9b03d\", //generated GUID\n                    \"Name\": \"PlaceDigitalArticle\", //Name of operation: PlaceDossier, PlaceImage, PlaceArticleElement, ClearFrameContent, PlaceDigitalArticle\n                    \"Type\": \"ContentStationDigitalEditor\", //Type: AutomatedPrintWorkflow, ContentStationDigitalEditor\n                    \"Params\": [\n                        {\n                            \"Name\": \"EditionId\",\n                            \"Value\": \"0\",\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ArticleId\",\n                            \"Value\": \"13685\", //ID of the Digital Article object\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"InDesignArticleId\", //ID of the ID article, use GetObjects call to get the ID\n                            \"Value\": \"6979\",\n                            \"__classname__\": \"Param\"\n                        },\n                        {\n                            \"Name\": \"ConversionRuleSetId\", //Currently there is no public way to get this data via API. Have to use loggin\n                            \"Value\": \"162\",\n                            \"__classname__\": \"Param\"  \n                        }\n                    ]\n                }\n            ]\n        }\n                \n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -274,7 +353,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"1.0\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
 							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
@@ -291,7 +370,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP POST request to the specified URL with the provided payload. The request body contains a JSON object with the \"method\", \"id\", and \"Params\" fields. The \"Params\" field further contains a \"req\" object with various parameters such as \"User\", \"Password\", \"ClientName\", \"ClientAppName\", \"ClientAppVersion\", \"ClientAppSerial\", and \"RequestInfo\". The \"**classname**\" field is also present in the \"req\" object.\n\nThe user has requested to document the response of this request as a JSON schema."
 					},
 					"response": []
 				},
@@ -302,7 +382,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Article\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"QueryObjects\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"Params\": [\t\n\t\t\t\t\t\t{ \"__classname__\": \"QueryParam\", \"Property\": \"Type\", \"Operation\": \"=\", \"Value\": \"Layout\" }\n\t\t\t\t\t],\n\t\t\t\t\t\"FirstEntry\": null,\n\t\t\t\t\t\"MaxEntries\": null,\n\t\t\t\t\t\"Hierarchical\": false,\n\t\t\t\t\t\"MinimalProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"RequestProps\": [   \"ID\", \n\t\t\t\t\t\t\t\t\t    \"Type\",\n\t\t\t\t\t\t\t\t\t\t\"Name\"\n\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\"Areas\": null,\n\t\t\t\t\t\"GetObjectMode\": false,\n                    \"__classname__\": \"WflQueryObjectsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -336,7 +416,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\",\n                \"InDesignArticles\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Pages\", \"Targets\", \"Files\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -358,7 +438,42 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to send a payload to the specified endpoint. The request body is in raw format and contains a JSON object with the keys \"method\", \"id\", \"params\", and \"jsonrpc\". The \"method\" key specifies the method to be executed, and the \"params\" key holds an array of parameters including \"Ticket\", \"IDs\", \"Lock\", \"Rendition\", \"RequestInfo\", \"HaveVersions\", \"Areas\", \"EditionId\", \"SupportedContentSources\", and \"**classname**\". The \"id\" key is used to identify the request, and the \"jsonrpc\" key specifies the JSON-RPC version.\n\nUpon successful execution, the response will contain the result of the requested method along with any relevant data."
+					},
+					"response": []
+				},
+				{
+					"name": "SaveObjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"SaveObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"CreateVersion\": false,\n            \"ForceCheckIn\": false\n            \"Unlock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\",\n                \"InDesignArticles\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflSaveObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request is used to save objects by sending a payload to the specified endpoint. The request body is in raw format and contains a JSON object with parameters such as method, id, and params. The \"method\" parameter specifies the action to be performed, while the \"params\" array includes various attributes for the save operation. The \"jsonrpc\" parameter indicates the JSON-RPC version used for the request.\n\nThe response to this request will include the result of the save operation, providing information about the success or failure of the action along with any relevant data."
 					},
 					"response": []
 				},
@@ -369,7 +484,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"{{Object_ID}}\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"Comment\": \"This is my comment 2\",\n                \"__classname__\": \"WorkflowMetaData\"\n            },\n            \"ExtraMetaData\": null,\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": null,\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"SetObjectProperties\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"6\",\n        \"MetaData\": {\n            \"BasicMetaData\": null,\n            \"RightsMetaData\": null,\n            \"SourceMetaData\": null,\n            \"ContentMetaData\": null,\n            \"WorkflowMetaData\": {\n                \"__classname__\": \"WorkflowMetaData\",\n                \"State\": {\n                   \"__classname__\": \"State\",\n                    \"Id\": \"6\",\n                    \"Name\": \"Images\"\n                }\n            },\n            \"ExtraMetaData\": null,\n        \"__classname__\": \"MetaData\"\n        },\n        \"Targets\": [{\n                \"PubChannel\": {\n                    \"Id\": \"3\",\n                    \"Name\": \"Other\",\n                    \"__classname__\": \"PubChannel\"\n                },\n                \"Issue\": {\n                    \"Id\": \"4\",\n                    \"Name\": \"Other Issue\",\n                    \"OverrulePublication\": null,\n                    \"Sections\": null,\n                    \"States\": null,\n                    \"Editions\": null,\n                    \"Description\": null,\n                    \"Subject\": null,\n                    \"PublicationDate\": null,\n                    \"ReversedRead\": null,\n                    \"__classname__\": \"Issue\"\n                },\n                \"Editions\": [ ],\n                \"Published date\": null,\n                \"Published version\": null,\n                \"Classname\": \"Target\"\n            }],\n        \"__classname__\": \"WflSetObjectPropertiesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -391,7 +506,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "The HTTP POST request to `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON` is used to send a payload in order to set object properties. The payload includes a method to set object properties, an ID, and various parameters such as Ticket, ID, MetaData, and Targets. The request body is in raw JSON format and contains specific details related to the object properties being set.\n\n### Response\n\nThe response of this request is a JSON schema. The structure of the response will follow a predefined schema format and will include the properties and their data types as per the response from the server."
 					},
 					"response": []
 				},
@@ -424,7 +540,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to send a request to set object properties to the specified server directory in JSON format. The request payload includes a method to set object properties, along with various parameters such as Ticket, ID, MetaData, and Targets. The MetaData parameter consists of BasicMetaData, RightsMetaData, SourceMetaData, ContentMetaData, WorkflowMetaData, and ExtraMetaData, each with their respective values. The user also wants to document the response of this request as a JSON schema."
 					},
 					"response": []
 				},
@@ -457,7 +574,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to send a payload to the specified endpoint. The request body is in raw format and contains a JSON payload with the method \"GetPublications\", an ID, and additional parameters. The \"Ticket\" parameter is expected to be replaced with a specific value, and the \"RequestInfo\" parameter includes \"PubChannels\". The \"**classname**\" parameter is also included in the request.\n\nThe response body for this request will contain the result of the \"GetPublications\" method call, along with any relevant data based on the provided parameters."
 					},
 					"response": []
 				},
@@ -468,7 +586,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"7245\",\n        \"Publication\": null,\n        \"Issue\": null,\n        \"Section\": null,\n        \"Type\":null,\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetStates\",\n    \"id\": \"1\",\n    \"params\": [{\n        \"Ticket\": \"{{Current_Ticket}}\",\n        \"ID\": \"\",\n        \"Publication\": \"17\",\n        \"Issue\": null,\n        \"Section\": null,\n        \"Type\":\"Layout\",\n        \"__classname__\": \"WflGetStatesRequest\"\n    }],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -490,7 +608,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to make a POST request to retrieve states using a specific method.\n\n#### Request Body\n\n- **method** (string, required): Specifies the method as \"GetStates\".\n    \n- **id** (string, required): An identifier for the request.\n    \n- **params** (array, required): An array of parameters including \"Ticket\", \"ID\", \"Publication\", \"Issue\", \"Section\", \"Type\", and \"**classname**\".\n    \n    - **Ticket** (string, required): Represents the current ticket.\n        \n    - **ID** (string, optional): Represents the ID.\n        \n    - **Publication** (string, required): Specifies the publication.\n        \n    - **Issue** (null, optional): Represents the issue.\n        \n    - **Section** (null, optional): Represents the section.\n        \n    - **Type** (string, required): Specifies the type as \"Layout\".\n        \n    - **classname** (string, required): Represents the class name as \"WflGetStatesRequest\".\n        \n- **jsonrpc** (string, required): Specifies the JSON-RPC version as \"2.0\".\n    \n\n#### Response (JSON Schema)\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"result\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"state\": { \"type\": \"string\" },\n          \"code\": { \"type\": \"integer\" }\n        },\n        \"required\": [\"state\", \"code\"]\n      }\n    },\n    \"id\": { \"type\": \"string\" },\n    \"jsonrpc\": { \"type\": \"string\" }\n  },\n  \"required\": [\"result\", \"id\", \"jsonrpc\"]\n}\n\n ```"
 					},
 					"response": []
 				},
@@ -523,7 +642,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "## POST\n\nThis endpoint allows you to send a POST request to delete objects using the specified parameters.\n\n### Request Body\n\n- **method** (string) - Specifies the method as \"DeleteObjects\".\n    \n- **id** (string) - Specifies the ID as \"2\".\n    \n- **params** (array) - Contains the parameters for the deletion operation.\n    \n    - **Ticket** (string) - Represents the ticket for authorization.\n        \n    - **IDs** (array) - Contains the IDs of the objects to be deleted.\n        \n    - **Permanent** (boolean) - Indicates whether the deletion is permanent or not.\n        \n    - **Areas** (array) - Specifies the areas from which the objects will be deleted.\n        \n    - **Context** (string) - Represents the context for the deletion operation.\n        \n    - **classname** (string) - Represents the class name for the deletion request.\n        \n- **jsonrpc** (string) - Specifies the JSON-RPC version as \"2.0\".\n    \n\n### Response\n\nThe response to this request will contain the outcome of the delete operation."
 					},
 					"response": []
 				},
@@ -556,7 +676,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to retrieve user data by sending a request to the specified URL with the specified payload. The request body is in raw format and contains information about the method, id, parameters, and JSON-RPC version.\n\n### Response\n\nThe response of this request is a JSON schema representing the structure of the response data. It includes the properties and their data types that can be expected in the response when making this request."
 					},
 					"response": []
 				},
@@ -589,7 +710,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is made in order to retrieve server information. The request payload is in raw JSON format and includes the method, id, params, and jsonrpc fields.\n\n### Request Body\n\n- `method` (string): Specifies the method as \"GetServerInfo\".\n    \n- `id` (string): Represents the identifier as \"1\".\n    \n- `params` (object): Contains the request object with keys like \"req\" and \"**classname**\".\n    \n    - `req` (object): Includes the \"Ticket\" and \"**classname**\" fields for the WflGetServerInfoRequest.\n        \n- `jsonrpc` (string): Indicates the JSON-RPC version as \"2.0\".\n    \n\n### Response\n\nThe response of this request is documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -622,7 +744,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to send a payload to the specified endpoint. The request body is in raw format and contains a JSON object with parameters such as method, id, and params. The method parameter is set to \"GetUserGroups\" and the id parameter is set to \"1\". The params object includes a req property with Ticket and **classname** attributes. The Ticket attribute is set to a value and **classname** is set to \"WflGetUserGroupsRequest\". The jsonrpc property is set to \"2.0\".\n\nThe response to this request will contain the result of the GetUserGroups method call, along with any relevant data or error information."
 					},
 					"response": []
 				},
@@ -655,7 +778,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP POST request to the specified URL with the provided payload in the raw request body. The request includes a method \"GetUserProfile\" along with an ID and parameters. The \"Ticket\" and \"RequestInfo\" are part of the parameters. The response of this request will be documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -688,7 +812,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to retrieve user settings by sending a JSON payload to the specified server directory. The request body includes a method, an ID, and parameters containing a ticket, an array of settings, and a classname. The server expects the payload in JSON format and responds with the relevant user settings."
 					},
 					"response": []
 				},
@@ -721,7 +846,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to make a POST request to retrieve named queries. The request body should be in JSON format.\n\n#### Request Body\n\n- `method` (string): Specifies the method as \"GetNamedQueries\".\n    \n- `id` (string): Specifies the id as \"1\".\n    \n- `params` (object): Contains the parameters for the request.\n    \n    - `req` (object): Contains the request details.\n        \n        - `Ticket` (string): Represents the ticket information.\n            \n        - `__classname__` (string): Specifies the class name as \"WflGetNamedQueriesRequest\".\n            \n- `jsonrpc` (string): Specifies the JSON-RPC version as \"2.0\".\n    \n\n#### Response\n\nThe response will contain the result of the named queries retrieval."
 					},
 					"response": []
 				},
@@ -754,7 +880,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to send a payload to the specified endpoint. The request is made to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php with the protocol parameter set to JSON.\n\n### Request Body\n\n- **method** (string) - The method being called, in this case, \"CheckTicket\".\n    \n- **id** (string) - The unique identifier for the request, in this case, \"1\".\n    \n- **params** (object) - An object containing the request parameters.\n    \n    - **req** (object) - An object containing the ticket information.\n        \n        - **Ticket** (string) - The ticket value.\n            \n        - **classname** (string) - The class name for the request, in this case, \"WflCheckTicketRequest\".\n            \n- **jsonrpc** (string) - The version of the JSON-RPC protocol being used, in this case, \"2.0\".\n    \n\n### Response\n\nThe response of this request is documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -787,7 +914,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "\n### UnlockObjects Request\n\nThis endpoint makes an HTTP POST request to `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON` to unlock specific objects.\n\n#### Request Body\n- method (string) - The method to be executed, in this case, \"UnlockObjects\".\n- id (string) - The identifier for the request, in this case, \"1\".\n- params (array) - An array containing the parameters for the request.\n  - Ticket (string) - The ticket for authentication.\n  - IDs (array) - An array of object IDs to be unlocked.\n  - ReadMessageIDs (string) - The IDs of read messages.\n  - MessageList (null) - A placeholder for message list.\n  - __classname__ (string) - The class name for the request, in this case, \"WflUnlockRequest\".\n- jsonrpc (string) - The JSON-RPC version, in this case, \"2.0\".\n\n#### Response (JSON Schema)\nThe response of this request follows the JSON schema defined by the API.\n\n"
 					},
 					"response": []
 				},
@@ -820,7 +948,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "\n### LogOff Request\n\nThis endpoint makes an HTTP POST request to log off a user from the system. The request body should be sent in raw JSON format and include the method, id, params, and jsonrpc fields.\n\n#### Request Body\n- `method` (string): Specifies the method to be called, in this case, \"LogOff\".\n- `id` (string): Represents the unique identifier for the request, in this case, \"1\".\n- `params` (array): Contains the parameters for the log off request, including the Ticket and __classname__ fields.\n  - `Ticket` (string): Represents the ticket of the current user session.\n  - `__classname__` (string): Indicates the class name for the log off request, in this case, \"WflLogOffRequest\".\n- `jsonrpc` (string): Indicates the version of the JSON-RPC protocol being used, in this case, \"2.0\".\n\n#### Response Body\nThe response to this request will depend on the server's implementation and may include data confirming the successful log off or any error messages.\n\n"
 					},
 					"response": []
 				}
@@ -858,7 +987,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP POST request to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON to perform a \"LogOn\" method. The request body should include the \"AdminUser\" and \"Password\" parameters for authentication, along with other optional parameters. The response will contain the result of the LogOn method execution."
 					},
 					"response": []
 				},
@@ -891,7 +1021,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to retrieve issues using the \"GetIssues\" method.\n\n#### Request Body\n\n- `method` (string) - The method name, set to \"GetIssues\".\n    \n- `id` (string) - The ID of the request, set to \"1\".\n    \n- `params` (array) - An array containing the request parameters:\n    \n    - `Ticket` - The ticket for the admin user.\n        \n    - `RequestModes` (array) - An array containing the request modes, set to \\[\"GetIssues\"\\].\n        \n    - `PublicationId` - The ID of the publication.\n        \n    - `PubChannelId` - The ID of the publication channel.\n        \n    - `__classname__` - The class name for the request, set to \"AdmGetIssuesRequest\".\n        \n- `jsonrpc` (string) - The JSON-RPC version, set to \"2.0\".\n    \n\n#### Response (JSON Schema)\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"result\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          // Properties of the response object\n        }\n      }\n    },\n    \"error\": {\n      \"type\": \"object\",\n      \"properties\": {\n        // Properties of the error object\n      }\n    },\n    \"id\": { \"type\": \"string\" },\n    \"jsonrpc\": { \"type\": \"string\" }\n  }\n}\n\n ```"
 					},
 					"response": []
 				},
@@ -924,7 +1055,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "The HTTP POST request to `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON` is used to create issues using the \"CreateIssues\" method. The request payload includes the method, id, and parameters containing details about the ticket, request modes, publication ID, pub channel ID, issue name, description, sort order, email notify, reversed read, overrule publication, deadline, expected pages, subject, activation status, publication date, extra metadata, and calculate deadlines.\n\nThe response of this request can be documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -958,7 +1090,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "The HTTP POST request to `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/StudioServer/adminindex.php?protocol=JSON` is used to copy publications. The request body should be in JSON format and include the method, id, and params fields. The method field should be set to \"CopyPublications\" and the params field should contain the necessary details for copying publications, such as the Ticket, RequestModes, DuplicateIssues, SourcePubId, and TargetPubs. The response of this request should be documented as a JSON schema and a description for the request and response body should be added to the documentation."
 					},
 					"response": []
 				},
@@ -991,7 +1124,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to retrieve user information by sending a request to the specified adminindex.php endpoint with the protocol set to JSON. The request body is in raw format and includes the method \"GetUsers\" along with an ID and parameters such as Ticket, RequestModes, GroupId, UserIds, and **classname**. The server responds with the relevant user information in JSON format."
 					},
 					"response": []
 				},
@@ -1024,7 +1158,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to modify users via the adminindex.php endpoint on the Studio server. The request payload is sent in JSON format and includes the method, id, and params fields. The method field specifies \"ModifyUsers\" as the action to be performed. The params field contains the request object with the Ticket, RequestModes, and Users array, where each user object includes Id, Name, FullName, EmailAddress, Language, and **classname** properties. The response to this request will contain the outcome of the user modification operation."
 					},
 					"response": []
 				},
@@ -1057,7 +1192,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### Request Description\n\nThis endpoint makes an HTTP POST request to `{{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON` to retrieve user groups. The request body should be in JSON format and includes the method, id, and params fields.\n\n| Key | Type | Description |\n| --- | --- | --- |\n| method | String | Specifies the method to be executed, in this case, \"GetUserGroups\" |\n| id | String | Identifier for the request, in this case, \"1\" |\n| params | Object | Contains the request parameters including Ticket, RequestModes, UserId, GroupIds, and **classname** |\n\n#### Request Body\n\n- method (String): Specifies the method to be executed, in this case, \"GetUserGroups\"\n    \n- id (String): Identifier for the request, in this case, \"1\"\n    \n- params (Object): Contains the request parameters including Ticket, RequestModes, UserId, GroupIds, and **classname**\n    \n\n### Response\n\nThe response for this request should be documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -1090,7 +1226,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP POST request to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php with the protocol parameter set to JSON. The request body is a JSON object with the method set to \"LogOff\", id set to \"1\", and params containing a Ticket and **classname** property. Upon successful execution, the response will be documented as a JSON schema."
 					},
 					"response": []
 				}
@@ -1110,55 +1247,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"\",\n\t\t\t\"Password\":\"\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON&user=woodwing&password=ww&ClientName=Postman&ClientAppName=Postman&Ticket",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"{{Studio_Server_Directory}}",
-								"editorialplan.php"
-							],
-							"query": [
-								{
-									"key": "protocol",
-									"value": "JSON"
-								},
-								{
-									"key": "user",
-									"value": "woodwing"
-								},
-								{
-									"key": "password",
-									"value": "ww"
-								},
-								{
-									"key": "ClientName",
-									"value": "Postman"
-								},
-								{
-									"key": "ClientAppName",
-									"value": "Postman"
-								},
-								{
-									"key": "Ticket",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CreateLayouts",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"method\": \"CreateLayouts\",\n\t\"id\": \"1\",\n\t\"params\": [{\n\t\t\"req\":{\n                \"Ticket\": \"\",\n\t\t        \"Layouts\": [{\n\t\t\t        \"LayoutFromTemplate\": [{\n\t\t\t\t        \"NewLayout\": [{\n\t\t\t\t\t        \"Layout\": [{\n\t\t\t\t\t\t        \"Id\": \"\",\n\t\t\t\t\t\t        \"Name\": \"Planned Layout\",\n\t\t\t\t\t\t        \"Publication\": \"\",\n\t\t\t\t\t\t        \"Issue\": \"\",\n\t\t\t\t\t\t        \"PubChannel\": \"\",\n\t\t\t\t\t\t        \"Section\": \"\",\n\t\t\t\t\t\t        \"Status\": \"\",\n\t\t\t\t\t\t        \"Pages\": [],\n\t\t\t\t\t\t        \"Editions\": [],\n\t\t\t\t\t\t        \"Deadline\": \"\",\n\t\t\t\t\t\t        \"Version\": \"\",\n\t\t\t\t\t\t        \"__classname__\": \"PlnLayout\"\n\t\t\t\t\t        }],\n\t\t\t\t        \"Template\": \"Default Template\"    \n\t\t\t\t        }],\n                        \"__classname__\": \"PlnLayoutFromTemplate\"\n\t\t\t        }]\n\t\t        }],\n\t\t        \"__classname__\": \"PlnCreateLayoutsRequest\"\n\t        }\n    }],\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1180,7 +1269,353 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This endpoint allows you to send an HTTP POST request to the specified URL and directory with the purpose of logging on. The request payload should be in JSON format and include the method, id, and Params with specific user information. Upon successful execution, the response will be documented as a JSON schema."
+					},
+					"response": []
+				},
+				{
+					"name": "CreateLayouts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"CreateLayouts\",\n\t\"id\": \"1\",\n\t\"params\": [{\n\t\t\"req\":{\n                \"Ticket\": \"{{Current_Ticket}}\",\n\t\t        \"Layouts\": [{\n\t\t\t        \"LayoutFromTemplate\": [{\n\t\t\t\t        \"NewLayout\": [{\n\t\t\t\t\t        \"Layout\": [{\n\t\t\t\t\t\t        \"Id\": \"\",\n\t\t\t\t\t\t        \"Name\": \"Planned Layout\",\n\t\t\t\t\t\t        \"Publication\": \"25\",\n\t\t\t\t\t\t        \"Issue\": \"41\",\n\t\t\t\t\t\t        \"PubChannel\": \"17\",\n\t\t\t\t\t\t        \"Section\": \"40\",\n\t\t\t\t\t\t        \"Status\": \"341\",\n\t\t\t\t\t\t        \"Pages\": [],\n\t\t\t\t\t\t        \"Editions\": [],\n\t\t\t\t\t\t        \"Deadline\": \"\",\n\t\t\t\t\t\t        \"Version\": \"\",\n\t\t\t\t\t\t        \"__classname__\": \"PlnLayout\"\n\t\t\t\t\t        }],\n\t\t\t\t        \"Template\": \"JG - Template\"    \n\t\t\t\t        }],\n                        \"__classname__\": \"PlnLayoutFromTemplate\"\n\t\t\t        }]\n\t\t        }],\n\t\t        \"__classname__\": \"PlnCreateLayoutsRequest\"\n\t        }\n    }],\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"editorialplan.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request is used to create layouts in the editorial plan. The request is sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php with the protocol parameter set to JSON. The request body is in raw format and contains a method \"CreateLayouts\" along with an id and params. The params include a Ticket, Layouts, and classname. The Ticket is a placeholder for the current ticket, and Layouts contains information about the planned layout, such as Name, Publication, Issue, PubChannel, Section, Status, Pages, Editions, Deadline, Version, and Template.\n\nThe response to this request will contain the result of the CreateLayouts method, providing information about the success or failure of the layout creation operation."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Connect Webhooks",
+			"item": [
+				{
+					"name": "LogOn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								},
+								{
+									"key": "user",
+									"value": "{{User_Name}}",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "{{Password}}",
+									"disabled": true
+								},
+								{
+									"key": "ClientName",
+									"value": "Postman",
+									"disabled": true
+								},
+								{
+									"key": "ClientAppName",
+									"value": "Postman",
+									"disabled": true
+								}
+							]
+						},
+						"description": "The HTTP POST request to the specified URL and directory is used to perform a \"LogOn\" method with the provided payload in JSON format. The request body includes the user's credentials, client information, and request details.\n\n### Request Body\n\n- method (string): \"LogOn\"\n    \n- id (string): \"1\"\n    \n- Params (object):\n    \n    - req (object):\n        \n        - User (string): The user's username\n            \n        - Password (string): The user's password\n            \n        - ClientName (string): \"postman\"\n            \n        - ClientAppName (string): \"postman_sample_requests\"\n            \n        - ClientAppVersion (string): \"\"\n            \n        - ClientAppSerial (string): \"\"\n            \n        - RequestInfo (array): Contains additional request information\n            \n        - **classname** (string): \"WflLogOnRequest\"\n            \n- jsonrpc (string): \"2.0\"\n    \n\n### Response\n\nThe response to the request includes a status code of 200 and the content type is \"application/json\". The response body contains the result object with various properties such as Ticket, Publications, NamedQueries, FeatureSet, LimitationSet, ServerInfo, Settings, Users, UserGroups, Membership, ObjectTypeProperties, ActionProperties, Terms, FeatureProfiles, Messages, TrackChangesColor, Dictionaries, MessageList, CurrentUser, MessageQueueConnections, MessageQueue, and **classname**. Each property holds specific data related to the logon process."
+					},
+					"response": []
+				},
+				{
+					"name": "GetTriggerOptions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"GetTriggerOptions\",\n    \"id\": \"1\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"__classname__\": \"CwhRegGetTriggerOptionsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "### ConnectWebhooks Registration - GetTriggerOptions\n\nThis endpoint allows you to retrieve trigger options for ConnectWebhooks registration.\n\n#### Request Body\n\n- Method: JSON\n    \n    - `method`: The method to be executed, set to \"GetTriggerOptions\".\n        \n    - `id`: The ID of the request, set to \"1\".\n        \n    - `params`: An array containing the request parameters, including the \"Ticket\" and \"**classname**\".\n        \n\n#### Response\n\nThe response will be in JSON format and follows the schema:\n\n``` json\n{\n  \"id\": \"\",\n  \"result\": {\n    \"Options\": [\n      {\n        \"Entity\": {\n          \"Name\": \"\",\n          \"DisplayName\": \"\",\n          \"__classname__\": \"\"\n        },\n        \"EventTypes\": [\n          {\n            \"Name\": \"\",\n            \"DisplayName\": \"\",\n            \"__classname__\": \"\"\n          }\n        ],\n        \"__classname__\": \"\"\n      }\n    ],\n    \"__classname__\": \"\"\n  },\n  \"jsonrpc\": \"\"\n}\n\n ```\n\nThis JSON schema represents the structure of the response returned by the API endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "ListWebhookRegistrations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\":\"ListWebhookRegistrations\",\n    \"id\": \"\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n\t\t\t\"__classname__\": \"CwhRegListWebhookRegistrationsRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\":\"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This endpoint allows you to make an HTTP POST request to retrieve a list of webhook registrations. The request should be sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON. The request body should be in raw JSON format and include the \"method\" key set to \"ListWebhookRegistrations\", an empty \"id\", and \"params\" containing \"req\" with \"Ticket\" and \"**classname**\" fields.\n\n### Request Body\n\n- Method: text\n    \n    - Description: The method to be executed, set to \"ListWebhookRegistrations\".\n        \n- id: text\n    \n    - Description: The ID, set to an empty string.\n        \n- params: text\n    \n    - Description: Additional parameters including \"req\" with \"Ticket\" and \"**classname**\" fields.\n        \n\nUpon successful execution, the response will have a status code of 200 and a content type of application/json. The response body will contain an \"id\" field set to an empty string, and a \"result\" field containing an array of \"Registrations\" with details including \"Id\", \"Name\", \"Url\", \"Triggers\", \"SystemId\", and \"Enabled\".\n\n### Response Body\n\n- id: text\n    \n    - Description: The ID, set to an empty string.\n        \n- result: text\n    \n    - Description: Contains an array of \"Registrations\" with details of each registration.\n        \n    - Registrations: array\n        \n        - Id: text\n            \n            - Description: The ID of the registration.\n                \n        - Name: text\n            \n            - Description: The name of the registration.\n                \n        - Url: text\n            \n            - Description: The URL associated with the registration.\n                \n        - Triggers: array\n            \n            - Description: Contains details of triggers including \"EntityName\", \"EventTypes\", and \"**classname**\".\n                \n        - SystemId: text\n            \n            - Description: The system ID associated with the registration.\n                \n        - Enabled: boolean\n            \n            - Description: Indicates if the registration is enabled."
+					},
+					"response": []
+				},
+				{
+					"name": "GetWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"c41c63b4-b02c-4b31-a79e-a6ed2c3caa69\",\n\t\t\t\"__classname__\": \"CwhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "### Connect Webhooks Registration\n\nThis endpoint allows you to register a webhook for ConnectWebhooks plugin in JSON format.\n\n#### Request Body\n\n- **jsonrpc** (string) - The JSON-RPC version.\n    \n- **method** (string) - The method to be executed, in this case, \"GetWebhookRegistration\".\n    \n- **params** (object) - The parameters for the request.\n    \n    - **req** (object) - The request object containing:\n        \n        - **Ticket** (string) - The ticket information.\n            \n        - **Id** (string) - The ID for the registration.\n            \n        - **classname** (string) - The class name for the request.\n            \n\n#### Response\n\nUpon successful execution, the response will include:\n\n- **id** (string) - The ID of the response.\n    \n- **result** (object) - The result object containing:\n    \n    - **Registration** (object) - The registration details including:\n        \n        - **Id** (string) - The ID of the registration.\n            \n        - **Name** (string) - The name of the registration.\n            \n        - **Url** (string) - The URL for the registration.\n            \n        - **SecretToken** (string) - The secret token for the registration.\n            \n        - **Triggers** (array) - An array of triggers containing:\n            \n            - **EntityName** (string) - The entity name for the trigger.\n                \n            - **EventTypes** (array) - An array of event types for the trigger.\n                \n            - **classname** (string) - The class name for the trigger.\n                \n        - **SystemId** (string) - The ID of the system.\n            \n        - **Enabled** (boolean) - Indicates if the registration is enabled.\n            \n        - **classname** (string) - The class name for the registration.\n            \n- **jsonrpc** (string) - The JSON-RPC version."
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"UpdateWebhookRegistration\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Id\": \"439b54fb-912a-4b2b-8fa2-f8a475090dc7\",\n                \"Name\": \"SendWhenObjectCreated4\",\n                \"Url\": \"https://webhook.site/2d085bd2-8bcd-410b-85c8-b5658b5bbac1\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"studio.object.deleted-permanently\"\n                        ],\n                        \"__classname__\":  \"CwhRegTrigger\"\n                    }\n                ],\n                \"SystemId\": \"dcf8cd99-5774-fd66-bc84-24dd0cc3d9c1\",\n                \"Enabled\": false,\n                \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"CwhRegCreateWebhookRegistrationRequest\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This endpoint allows you to make an HTTP POST request to register or update webhooks using JSON format. The request should be sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php with the plugin parameter set to ConnectWebhooks and the interface parameter set to reg, and the protocol parameter set to JSON.\n\n### Request Body\n\nThe request should include a JSON object with the following structure:\n\n``` json\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"UpdateWebhookRegistration\",\n  \"params\": [\n    {\n      \"Ticket\": \"{{Current_Ticket}}\",\n      \"Registration\": {\n        \"Id\": \"439b54fb-912a-4b2b-8fa2-f8a475...\",\n        \"Name\": \"SendWhenObjectCreated4\",\n        \"Url\": \"https://webhook.site/2d085bd2-...\",\n        \"SecretToken\": null,\n        \"Triggers\": [\n          {\n            \"EntityName\": \"object\",\n            \"EventTypes\": [\n              \"studio.object.deleted-permanen...\"\n            ],\n            \"__classname__\": \"CwhRegTrigger\"\n          }\n        ],\n        \"SystemId\": \"dcf8cd99-5774-fd66-bc84-24dd0c...\",\n        \"Enabled\": false,\n        \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n      },\n      \"__classname__\": \"CwhRegCreateWebhookRegistratio...\"\n    }\n  ]\n}\n### Response\nThe response to the request will have a status code of 204 and a Content-Type of text/xml. The response body will be null.\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateWebhookRegistration\",\n    \"id\": \"\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Name\": \"SendWhenObjectDeletedPermanentlyHook0\",\n                \"Url\": \"https://webhook.site/2d085bd2-8bcd-410b-85c8-b5658b5bbac1\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"studio.object.deleted-permanently\"\n                        ],\n                        \"__classname__\": \"CwhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"CwhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request is used to create a webhook registration for ConnectWebhooks plugin using JSON protocol. The request body includes the method \"CreateWebhookRegistration\" along with parameters such as Ticket, Registration details including Name, Url, and Triggers. The response will have a status code of 200 and a JSON content type. The response body will contain the result with the created Registration details including Id, Name, Url, SecretToken, Triggers, SystemId, and Enabled status.\n\n### Request Body\n\n- method (string): The method to create webhook registration.\n    \n- id (string): Identifier for the request.\n    \n- params (object): Parameters including Ticket and Registration details.\n    \n    - Ticket (string): The ticket information.\n        \n    - Registration (object): Details of the webhook registration.\n        \n        - Name (string): Name of the webhook registration.\n            \n        - Url (string): URL for the webhook.\n            \n        - SecretToken (string): Secret token for the webhook.\n            \n        - Triggers (array): Array of triggers for the webhook.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - **classname** (string): Classname for the webhook registration.\n            \n\n### Response Body\n\n- id (string): Identifier for the response.\n    \n- result (object): Result object containing the created Registration details.\n    \n    - Registration (object): Details of the created webhook registration.\n        \n        - Id (string): Identifier of the created registration.\n            \n        - Name (string): Name of the created registration.\n            \n        - Url (string): URL of the created registration.\n            \n        - SecretToken (string): Secret token of the created registration.\n            \n        - Triggers (array): Array of triggers for the created registration.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - SystemId (string): System identifier of the created registration.\n            \n        - Enabled (boolean): Status of the created registration.\n            \n        - **classname** (string): Classname for the created registration.\n            \n- jsonrpc (string): JSON-RPC version."
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"DeleteWebhookRegistration\",\n    \"id\": \"\",\n     \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"9b2b384f-c519-4caf-ba36-66715ef92f92\",\n            \"__classname__\": \"CwhRegDeleteWebhookRegistrationRequest\"\n        }\n     ],\n     \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "### POST\n\nThis endpoint is used to delete a webhook registration by sending an HTTP POST request to the specified URL.\n\n#### Request Body\n\n- method (string): Specifies the method as \"DeleteWebhookRegistration\".\n    \n- id (string): Represents the unique identifier.\n    \n- params (array): Contains the parameters for the deletion, including \"Ticket\" and \"Id\".\n    \n- jsonrpc (string): Indicates the JSON-RPC version.\n    \n\n#### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n  \"id\": \"\",\n  \"result\": {\n    \"__classname__\": \"\"\n  },\n  \"jsonrpc\": \"\"\n}\n\n ```\n\n- id (string): Represents the unique identifier.\n    \n- result (object): Contains the result of the deletion, with \"**classname**\" indicating the class name.\n    \n- jsonrpc (string): Indicates the JSON-RPC version."
 					},
 					"response": []
 				}
@@ -1238,7 +1673,8 @@
 									"disabled": true
 								}
 							]
-						}
+						},
+						"description": "The endpoint makes an HTTP POST request to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php with the protocol parameter set to JSON. The request payload includes a method, id, and Params object containing User, Password, ClientName, ClientAppName, ClientAppVersion, ClientAppSerial, RequestInfo, and **classname** properties.\n\n### Response\n\nThe response of this request can be documented as a JSON schema."
 					},
 					"response": []
 				},
@@ -1279,7 +1715,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to retrieve trigger options using the Webhooks plugin with the JSON protocol.\n\n#### Request Body\n\n- { \"jsonrpc\": \"2.0\", \"method\": \"GetTriggerOptions\", \"params\": { \"req\": { \"Ticket\": \"{{Current_Ticket}}\", \"__classname__\": \"WhRegGetTriggerOptionsRequest\" } }, \"id\": 1}\n    \n\n#### Response\n\nThe response of this request can be documented as a JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": { \"type\": \"string\" },\n    \"result\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"Options\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"Entity\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"Name\": { \"type\": \"string\" },\n                  \"DisplayName\": { \"type\": \"string\" },\n                  \"__classname__\": { \"type\": \"string\" }\n                }\n              },\n              \"EventTypes\": {\n                \"type\": \"array\",\n                \"items\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                    \"Name\": { \"type\": \"string\" },\n                    \"DisplayName\": { \"type\": \"string\" },\n                    \"__classname__\": { \"type\": \"string\" }\n                  }\n                }\n              },\n              \"__classname__\": { \"type\": \"string\" }\n            }\n          }\n        },\n        \"__classname__\": { \"type\": \"string\" }\n      }\n    },\n    \"jsonrpc\": { \"type\": \"string\" }\n  }\n}\n\n ```"
 					},
 					"response": []
 				},
@@ -1320,7 +1757,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to retrieve a list of webhook registrations. The request should be made with a JSON payload containing the necessary parameters.\n\n#### Request Body\n\n- `jsonrpc` (string): The JSON-RPC version.\n    \n- `method` (string): The method to be called, in this case, \"ListWebhookRegistrations\".\n    \n- `params` (object): An object containing the request parameters, such as \"Ticket\" and \"**classname**\".\n    \n- `id` (number): The request identifier.\n    \n\n#### Response\n\nThe response will be in JSON format and should adhere to the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"result\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    // Properties of the result items\n                }\n            }\n        },\n        \"id\": {\n            \"type\": \"number\"\n        },\n        \"jsonrpc\": {\n            \"type\": \"string\"\n        }\n    },\n    \"required\": [\"result\", \"id\", \"jsonrpc\"]\n}\n\n ```"
 					},
 					"response": []
 				},
@@ -1331,7 +1769,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 47,\n\t\t\t\"__classname__\": \"WhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 190,\n\t\t\t\"__classname__\": \"WhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1361,7 +1799,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### POST\n\nThis endpoint is used to retrieve webhook registration details using the JSON protocol.\n\n#### Request Body\n\n- { \"jsonrpc\": \"2.0\", \"method\": \"GetWebhookRegistration\", \"params\": { \"req\": { \"Ticket\": \"{{Current_Ticket}}\", \"Id\": 190, \"__classname__\": \"WhRegGetWebhookRegistrationReq ...\" } }, \"id\": 1}\n    \n\n#### Response (JSON Schema)\n\nThe response of this request can be documented as a JSON schema.\n\n- The JSON schema for the response will define the structure of the data returned by the API endpoint.\n    \n- It will include the properties, data types, and any validation rules for the response data."
 					},
 					"response": []
 				},
@@ -1402,7 +1841,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to update a webhook registration for the Webhooks plugin in the Studio Server. The request is sent to the specified directory with the plugin, interface, and protocol parameters. The request body is in raw JSON format and includes the necessary parameters for updating the webhook registration, such as the Ticket, Registration Id, Name, URL, SecretToken, and Triggers.\n\nThe response body will contain the result of the update operation, indicating whether the webhook registration was successfully updated or if there was an error. The response will provide relevant information about the updated webhook registration or any error messages encountered during the update process."
 					},
 					"response": []
 				},
@@ -1413,7 +1853,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"CreateWebhookRegistration\",\n    \"id\": \"\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Name\": \"SendWhenObjectCreated\",\n                \"Url\": \"https://www.jeffgapp.com\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"com.woodwing.studio\\/object\\/created\"\n                        ],\n                        \"__classname__\": \"WhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"WhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"WhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"CreateWebhookRegistration\",\n    \"id\": \"\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Name\": \"Test-sending-webhook\",\n                \"Url\": \"https://webhook.site/ccd03a3a-7f7f-42c6-8b45-8d57386a4953\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"com.woodwing.studio/object/properties-updated\"\n                        ],\n                        \"__classname__\": \"WhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"WhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"WhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1443,7 +1883,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "### Create Webhook Registration\n\nThis endpoint is used to create a webhook registration for the Webhooks plugin, with the interface set to 'reg' and the protocol set to JSON.\n\n#### Request Body\n\n- method (string): The method for creating the webhook registration.\n    \n- id (string): The unique identifier for the request.\n    \n- params (array): An array containing the details of the webhook registration.\n    \n    - Ticket (string): The ticket associated with the registration.\n        \n    - Registration (object): The details of the webhook registration.\n        \n        - Name (string): The name of the webhook registration.\n            \n        - Url (string): The URL where the webhook events will be sent.\n            \n        - SecretToken (string): The secret token for secure communication (if applicable).\n            \n        - Triggers (array): An array containing the triggers for the webhook registration.\n            \n            - EntityName (string): The entity name for the trigger.\n                \n            - EventTypes (array): An array of event types associated with the trigger.\n                \n        - **classname** (string): The class name for the webhook registration.\n            \n    - jsonrpc (string): The JSON-RPC version.\n        \n\n#### Response\n\nThe response for this request will be a JSON object conforming to the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"result\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"WebhookID\": {\n          \"type\": \"string\"\n        }\n      }\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"jsonrpc\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
 					},
 					"response": []
 				},
@@ -1454,7 +1895,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"DeleteWebhookRegistration\",\n    \"id\": \"\",\n     \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 46,\n            \"__classname__\": \"WhRegDeleteWebhookRegistrationRequest\"\n        }\n     ],\n     \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"DeleteWebhookRegistration\",\n    \"id\": \"\",\n     \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 94,\n            \"__classname__\": \"WhRegDeleteWebhookRegistrationRequest\"\n        }\n     ],\n     \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1484,7 +1925,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to interact with the Webhooks plugin on the server to manage webhook registrations. The request is sent to the specified directory and includes parameters for the plugin, interface, and protocol in the URL. The request body is in raw format and includes the method \"DeleteWebhookRegistration\" along with other parameters such as \"Ticket\", \"Id\", and \"**classname**\" within the \"params\" array. The \"jsonrpc\" version is specified as \"2.0\".\n\nThe response to this request will include the outcome of the \"DeleteWebhookRegistration\" method, providing details about the success or failure of the operation."
 					},
 					"response": []
 				},
@@ -1517,7 +1959,8 @@
 									"value": "JSON"
 								}
 							]
-						}
+						},
+						"description": "This HTTP POST request is used to log off from the server. The request is sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php with the protocol parameter set to JSON. The request body is in raw format and includes the method, id, params, and jsonrpc fields. The method field is set to \"LogOff\" to indicate the action, and the params field includes the Ticket and **classname** properties for the log off request.\n\nThe response to this request will contain the result of the log off action, along with any relevant data or error messages."
 					},
 					"response": []
 				}
@@ -1592,7 +2035,8 @@
 											"value": "{{Uuid_For_PUT}}"
 										}
 									]
-								}
+								},
+								"description": "\nThis endpoint allows you to upload a file to the specified directory on the Studio Server. The HTTP PUT request should be made to the provided URL with the ticket and fileguid as query parameters.\n\nThe response of this request is documented as a JSON schema.\n"
 							},
 							"response": []
 						},
@@ -1628,7 +2072,8 @@
 											"value": "DELETE"
 										}
 									]
-								}
+								},
+								"description": "This endpoint is used to delete a specific file from the server directory. The request should include the file upload URL, current ticket, and the UUID for the PUT method in the query parameters. The response will indicate the success or failure of the deletion operation.\n\n### Request Body\n\nThis request does not require a request body.\n\n### Response Body\n\n- success (boolean): Indicates whether the deletion operation was successful.\n    \n- message (string): Provides a message regarding the deletion operation."
 							},
 							"response": []
 						},
