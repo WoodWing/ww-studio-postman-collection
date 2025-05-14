@@ -416,7 +416,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Pages\", \"Targets\", \"Files\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n    \"method\": \"GetObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"IDs\": [\n                \"{{Object_ID}}\"\n            ],\n            \"Lock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Pages\", \"Targets\", \"Files\", \"Relations\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflGetObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -451,6 +451,40 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"method\": \"SaveObjects\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"CreateVersion\": false,\n            \"ForceCheckIn\": false\n            \"Unlock\": false,\n            \"Rendition\": \"native\",\n            \"RequestInfo\": [\n                \"Relations\",\n                \"PagesInfo\",\n                \"InDesignArticles\"\n            ],\n            \"HaveVersions\": [],\n            \"Areas\": null,\n            \"EditionId\": \"\",\n            \"SupportedContentSources\": [],\n            \"__classname__\": \"WflSaveObjectsRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request is used to save objects by sending a payload to the specified endpoint. The request body is in raw format and contains a JSON object with parameters such as method, id, and params. The \"method\" parameter specifies the action to be performed, while the \"params\" array includes various attributes for the save operation. The \"jsonrpc\" parameter indicates the JSON-RPC version used for the request.\n\nThe response to this request will include the result of the save operation, providing information about the success or failure of the action along with any relevant data."
+					},
+					"response": []
+				},
+				{
+					"name": "CopyObject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CopyObject\",\n    \"id\": \"2\",\n    \"params\": [\n        {\n            \n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"SourceID\": \"{{Object_ID}}\",\n            \"MetaData\":{\n                \"BasicMetaData\": {\n                    \"Name\": \"copied layout\",\n                    \"Category\": {\n                        \"Name\": \"News\",\n                        \"Id\": \"40\",\n                        \"__classname__\": \"Category\"\n                    },\n                    \"Type\": \"Layout\",\n                    \"Publication\": {\n                        \"Id\": \"25\",\n                        \"Name\": \"WoodWing\",\n                        \"__classname__\": \"Publication\"\n                    },\n                    \"__classname__\": \"BasicMetaData\"\n                },\n                \"WorkflowMetaData\": {\n                    \"Comment\": \"\",\n                    \"State\": {\n                        \"Id\": \"341\",\n                        \"Name\": \"Draft\",\n                        \"Type\": \"Layout\",\n                        \"__classname__\": \"State\"\n                    },\n                    \"__classname__\": \"WorkflowMetaData\"\n                },\n                \"RightsMetaData\": {\n                    \"__classname__\": \"RightsMetaData\"\n                },\n                \"SourceMetaData\": {\n                    \"__classname__\": \"SourceMetaData\"\n                },\n                \"ContentMetaData\": {\n                    \"Format\": \"application/indesign\",\n                    \"__classname__\": \"ContentMetaData\"\n                },\n                \"ExtraMetaData\": null,\n                \"__classname__\":\"MetaData\"\n            },\n            \"Targets\":[{\n                \"PubChannel\": {\n                    \"Id\": \"17\",\n                    \"Name\": \"Print\",\n                    \"__classname__\": \"PubChannel\"\n                },\n                \"Issue\": {\n                    \"Id\": \"41\",\n                    \"Name\": \"Week 1\",\n                    \"OverrulePublication\": null,\n                    \"__classname__\": \"Issue\"\n                },\n                \"Editions\": null,\n                \"PublishedDate\": null,\n                \"PublishedVersion\": null,\n                \"__classname__\": \"Target\"\n                }],\n            \"Relations\":[{\n                \"Parent\": \"14765\",\n                \"Type\": \"Contained\",\n                \"__classname__\": \"Relation\"\n            }],\n            \"__classname__\": \"Object\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n    \n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1458,7 +1492,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"c41c63b4-b02c-4b31-a79e-a6ed2c3caa69\",\n\t\t\t\"__classname__\": \"CwhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
+							"raw": "{\n    \"method\":\"GetWebhookRegistration\",\n    \"id\":1,\n    \"params\": [\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"372c646c-941b-4b04-abc9-34a9dbbc9f71\",\n\t\t\t\"__classname__\": \"CwhRegGetWebhookRegistrationRequest\"\n\t\t}\n    ],\n\t\"jsonrpc\":\"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1490,6 +1524,48 @@
 							]
 						},
 						"description": "### Connect Webhooks Registration\n\nThis endpoint allows you to register a webhook for ConnectWebhooks plugin in JSON format.\n\n#### Request Body\n\n- **jsonrpc** (string) - The JSON-RPC version.\n    \n- **method** (string) - The method to be executed, in this case, \"GetWebhookRegistration\".\n    \n- **params** (object) - The parameters for the request.\n    \n    - **req** (object) - The request object containing:\n        \n        - **Ticket** (string) - The ticket information.\n            \n        - **Id** (string) - The ID for the registration.\n            \n        - **classname** (string) - The class name for the request.\n            \n\n#### Response\n\nUpon successful execution, the response will include:\n\n- **id** (string) - The ID of the response.\n    \n- **result** (object) - The result object containing:\n    \n    - **Registration** (object) - The registration details including:\n        \n        - **Id** (string) - The ID of the registration.\n            \n        - **Name** (string) - The name of the registration.\n            \n        - **Url** (string) - The URL for the registration.\n            \n        - **SecretToken** (string) - The secret token for the registration.\n            \n        - **Triggers** (array) - An array of triggers containing:\n            \n            - **EntityName** (string) - The entity name for the trigger.\n                \n            - **EventTypes** (array) - An array of event types for the trigger.\n                \n            - **classname** (string) - The class name for the trigger.\n                \n        - **SystemId** (string) - The ID of the system.\n            \n        - **Enabled** (boolean) - Indicates if the registration is enabled.\n            \n        - **classname** (string) - The class name for the registration.\n            \n- **jsonrpc** (string) - The JSON-RPC version."
+					},
+					"response": []
+				},
+				{
+					"name": "CreateWebhookRegistration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method\": \"CreateWebhookRegistration\",\n    \"id\": \"\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Name\": \"studio.object.properties-update-Hook0\",\n                \"Url\": \"https://webhook.site/4eae43eb-fc51-4075-ae77-58d1d8332ec1\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"studio.object.properties-updated\"\n                        ],\n                        \"__classname__\": \"CwhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"CwhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"pluginindex.php"
+							],
+							"query": [
+								{
+									"key": "plugin",
+									"value": "ConnectWebhooks"
+								},
+								{
+									"key": "interface",
+									"value": "reg"
+								},
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request is used to create a webhook registration for ConnectWebhooks plugin using JSON protocol. The request body includes the method \"CreateWebhookRegistration\" along with parameters such as Ticket, Registration details including Name, Url, and Triggers. The response will have a status code of 200 and a JSON content type. The response body will contain the result with the created Registration details including Id, Name, Url, SecretToken, Triggers, SystemId, and Enabled status.\n\n### Request Body\n\n- method (string): The method to create webhook registration.\n    \n- id (string): Identifier for the request.\n    \n- params (object): Parameters including Ticket and Registration details.\n    \n    - Ticket (string): The ticket information.\n        \n    - Registration (object): Details of the webhook registration.\n        \n        - Name (string): Name of the webhook registration.\n            \n        - Url (string): URL for the webhook.\n            \n        - SecretToken (string): Secret token for the webhook.\n            \n        - Triggers (array): Array of triggers for the webhook.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - **classname** (string): Classname for the webhook registration.\n            \n\n### Response Body\n\n- id (string): Identifier for the response.\n    \n- result (object): Result object containing the created Registration details.\n    \n    - Registration (object): Details of the created webhook registration.\n        \n        - Id (string): Identifier of the created registration.\n            \n        - Name (string): Name of the created registration.\n            \n        - Url (string): URL of the created registration.\n            \n        - SecretToken (string): Secret token of the created registration.\n            \n        - Triggers (array): Array of triggers for the created registration.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - SystemId (string): System identifier of the created registration.\n            \n        - Enabled (boolean): Status of the created registration.\n            \n        - **classname** (string): Classname for the created registration.\n            \n- jsonrpc (string): JSON-RPC version."
 					},
 					"response": []
 				},
@@ -1532,48 +1608,6 @@
 							]
 						},
 						"description": "This endpoint allows you to make an HTTP POST request to register or update webhooks using JSON format. The request should be sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php with the plugin parameter set to ConnectWebhooks and the interface parameter set to reg, and the protocol parameter set to JSON.\n\n### Request Body\n\nThe request should include a JSON object with the following structure:\n\n``` json\n{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"UpdateWebhookRegistration\",\n  \"params\": [\n    {\n      \"Ticket\": \"{{Current_Ticket}}\",\n      \"Registration\": {\n        \"Id\": \"439b54fb-912a-4b2b-8fa2-f8a475...\",\n        \"Name\": \"SendWhenObjectCreated4\",\n        \"Url\": \"https://webhook.site/2d085bd2-...\",\n        \"SecretToken\": null,\n        \"Triggers\": [\n          {\n            \"EntityName\": \"object\",\n            \"EventTypes\": [\n              \"studio.object.deleted-permanen...\"\n            ],\n            \"__classname__\": \"CwhRegTrigger\"\n          }\n        ],\n        \"SystemId\": \"dcf8cd99-5774-fd66-bc84-24dd0c...\",\n        \"Enabled\": false,\n        \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n      },\n      \"__classname__\": \"CwhRegCreateWebhookRegistratio...\"\n    }\n  ]\n}\n### Response\nThe response to the request will have a status code of 204 and a Content-Type of text/xml. The response body will be null.\n\n ```"
-					},
-					"response": []
-				},
-				{
-					"name": "CreateWebhookRegistration",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"method\": \"CreateWebhookRegistration\",\n    \"id\": \"\",\n    \"params\": [\n        {\n            \"Ticket\": \"{{Current_Ticket}}\",\n            \"Registration\": {\n                \"Name\": \"SendWhenObjectDeletedPermanentlyHook0\",\n                \"Url\": \"https://webhook.site/2d085bd2-8bcd-410b-85c8-b5658b5bbac1\",\n                \"SecretToken\": null,\n                \"Triggers\": [\n                    {\n                        \"EntityName\": \"object\",\n                        \"EventTypes\": [\n                            \"studio.object.deleted-permanently\"\n                        ],\n                        \"__classname__\": \"CwhRegTrigger\"\n                    }\n                ],\n                \"__classname__\": \"CwhRegWebhookRegistrationInfo\"\n            },\n            \"__classname__\": \"CwhRegCreateWebhookRegistrationRequest\"\n        }\n    ],\n    \"jsonrpc\": \"2.0\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/pluginindex.php?plugin=ConnectWebhooks&interface=reg&protocol=JSON",
-							"host": [
-								"{{Studio_Server_URL}}"
-							],
-							"path": [
-								"{{Studio_Server_Directory}}",
-								"pluginindex.php"
-							],
-							"query": [
-								{
-									"key": "plugin",
-									"value": "ConnectWebhooks"
-								},
-								{
-									"key": "interface",
-									"value": "reg"
-								},
-								{
-									"key": "protocol",
-									"value": "JSON"
-								}
-							]
-						},
-						"description": "This HTTP POST request is used to create a webhook registration for ConnectWebhooks plugin using JSON protocol. The request body includes the method \"CreateWebhookRegistration\" along with parameters such as Ticket, Registration details including Name, Url, and Triggers. The response will have a status code of 200 and a JSON content type. The response body will contain the result with the created Registration details including Id, Name, Url, SecretToken, Triggers, SystemId, and Enabled status.\n\n### Request Body\n\n- method (string): The method to create webhook registration.\n    \n- id (string): Identifier for the request.\n    \n- params (object): Parameters including Ticket and Registration details.\n    \n    - Ticket (string): The ticket information.\n        \n    - Registration (object): Details of the webhook registration.\n        \n        - Name (string): Name of the webhook registration.\n            \n        - Url (string): URL for the webhook.\n            \n        - SecretToken (string): Secret token for the webhook.\n            \n        - Triggers (array): Array of triggers for the webhook.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - **classname** (string): Classname for the webhook registration.\n            \n\n### Response Body\n\n- id (string): Identifier for the response.\n    \n- result (object): Result object containing the created Registration details.\n    \n    - Registration (object): Details of the created webhook registration.\n        \n        - Id (string): Identifier of the created registration.\n            \n        - Name (string): Name of the created registration.\n            \n        - Url (string): URL of the created registration.\n            \n        - SecretToken (string): Secret token of the created registration.\n            \n        - Triggers (array): Array of triggers for the created registration.\n            \n            - EntityName (string): Name of the entity triggering the webhook.\n                \n            - EventTypes (array): Array of event types triggering the webhook.\n                \n        - SystemId (string): System identifier of the created registration.\n            \n        - Enabled (boolean): Status of the created registration.\n            \n        - **classname** (string): Classname for the created registration.\n            \n- jsonrpc (string): JSON-RPC version."
 					},
 					"response": []
 				},
@@ -1769,7 +1803,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 190,\n\t\t\t\"__classname__\": \"WhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"method\":\"GetWebhookRegistration\",\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": 241,\n\t\t\t\"__classname__\": \"WhRegGetWebhookRegistrationRequest\"\n\t\t}\n\t},\n\t\"id\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
