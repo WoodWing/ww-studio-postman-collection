@@ -52,6 +52,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.11 - Added: Workflow > CreateObjectOperations folder with calls for PlaceDossier, PlaceArticleElement, PlaceImage and ClearFrameContent
  - v0.12 - Added: New sample call that creates a Task with Targets (CreateObjects Task with Targets), Added new folder called 'Objects and Targets' and added a call to that folder called 'CreateObjectTargets'
  - v0.13 - Added: Connect Webhooks. These calls are here to show how to create Webhooks using the new Connect Webhooks feature. Note that this feature will not be available until May 2025
+ - v0.14 - Added: CopyObjects call. Also SaveObjects has been available for quite some time but not noted in the available calls below.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
@@ -85,20 +86,22 @@ Located in 'Digital Articles'
  3. LogOn
  4. QueryObjects
  5. GetObjects
- 6. SetObjectProperties
- 7. SetObjectProperties Custom Metadata
- 8. GetPublications
- 9. GetStates
- 10. DeleteObjects
- 11. GetUsers
- 12. GetServerInfo
- 13. GetUserGroups
- 14. GetUserProfile
- 15. GetUserSettings
- 16. GetNamedQueries
- 17. CheckTicket
- 18. UnlockObjects
- 19. LogOff
+ 6. SaveObjects
+ 7. CopyObject
+ 8. SetObjectProperties
+ 9. SetObjectProperties Custom Metadata
+ 10. GetPublications
+ 11. GetStates
+ 12. DeleteObjects
+ 13. GetUsers
+ 14. GetServerInfo
+ 15. GetUserGroups
+ 16. GetUserProfile
+ 17. GetUserSettings
+ 18. GetNamedQueries
+ 19. CheckTicket
+ 20. UnlockObjects
+ 21. LogOff
 
 ## Administration (incomplete)
  1. LogOn - Administration
