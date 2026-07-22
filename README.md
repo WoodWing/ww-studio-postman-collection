@@ -57,6 +57,10 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
 - v0.16 - Fixed: Removed hardcoded local file path from 'Upload Transfer Server Request' (Digital Articles and Print Articles) that broke on import for other users. Added a note in the request description prompting users to select their own file before sending.
 - v0.17 - Docs: Added folder descriptions to 'Connect Webhooks' and 'Webhooks' clarifying they are two distinct plugins, not duplicates — Connect Webhooks is the intended replacement (richer data, new delivery architecture) and Webhooks is legacy.
 - v0.18 - Fixed: Corrected invalid JSON in 'Connect Webhooks > GetWebhookRegistration' (params was wrapped in array brackets instead of an object), which would have failed to send as-is.
+- - v0.19 - Added: 'DeleteLayouts', 'ModifyLayouts', and 'LogOff - Planning' to the Planning folder. Introduced a dedicated 'Planning_Ticket' environment variable, automatically captured by 'LogOn - Planning' and used by all Planning calls, separate from the main Workflow 'Current_Ticket'.
+ - v0.20 - Added: 'GetPages' and 'GetPagesInfo' to the Workflow folder (previously 'GetPages' incorrectly called the GetPagesInfo method; both now have accurate descriptions).
+ - v0.21 - Changed: 'Connect Webhooks' and 'Webhooks' folders now log on as admin (Admin_User_Name/Admin_User_Password) and share 'Admin_Current_Ticket' with the Administration folder, rather than using regular user credentials and Current_Ticket.
+ - v0.22 - Fixed: Corrected the request body structure for 'CreateLayouts' and 'GetStates' to match the current API shape. Enhanced the 'QueryObjects' example with pagination, an additional Publication filter, and extra RequestProps.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
