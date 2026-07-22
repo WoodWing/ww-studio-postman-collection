@@ -61,6 +61,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.20 - Added: 'GetPages' and 'GetPagesInfo' to the Workflow folder (previously 'GetPages' incorrectly called the GetPagesInfo method; both now have accurate descriptions).
  - v0.21 - Changed: 'Connect Webhooks' and 'Webhooks' folders now log on as admin (Admin_User_Name/Admin_User_Password) and share 'Admin_Current_Ticket' with the Administration folder, rather than using regular user credentials and Current_Ticket.
  - v0.22 - Fixed: Corrected the request body structure for 'CreateLayouts' and 'GetStates' to match the current API shape. Enhanced the 'QueryObjects' example with pagination, an additional Publication filter, and extra RequestProps.
+ - v0.23 - Docs: Added descriptions to the 6 remaining undocumented requests (CreateObjects Digital Article, QueryObjects Digital Article Templates, Download Transfer Server Request under Digital Articles; CreateObjects Print Article, Delete Transfer Server Request, Download Transfer Server Request under Print Articles). Every request in the collection now has documentation.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
