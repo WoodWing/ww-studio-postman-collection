@@ -2182,7 +2182,7 @@
 								"body": {
 									"mode": "file",
 									"file": {
-										"src": "testfile.json"
+										"src": null
 									}
 								},
 								"url": {
@@ -2205,7 +2205,7 @@
 										}
 									]
 								},
-								"description": "\nThis endpoint allows you to upload a file to the specified directory on the Studio Server. The HTTP PUT request should be made to the provided URL with the ticket and fileguid as query parameters.\n\nThe response of this request is documented as a JSON schema.\n"
+								"description": "NOTE: No default file is attached. File paths are local to each machine, so a specific path (e.g. a file that only existed on the original author's computer) can't be shared through a collection export. Before sending this request, open the Body tab, click 'Select File', and choose the file you want to upload.\n\nThis endpoint allows you to upload a file to the specified directory on the Studio Server. The HTTP PUT request should be made to the provided URL with the ticket and fileguid as query parameters.\n\nThe response of this request is documented as a JSON schema."
 							},
 							"response": []
 						},
@@ -2407,7 +2407,7 @@
 								"body": {
 									"mode": "file",
 									"file": {
-										"src": "testfile.json"
+										"src": null
 									}
 								},
 								"url": {
@@ -2429,7 +2429,8 @@
 											"value": "{{Uuid_For_PUT}}"
 										}
 									]
-								}
+								},
+								"description": "NOTE: No default file is attached. File paths are local to each machine, so a specific path (e.g. a file that only existed on the original author's computer) can't be shared through a collection export. Before sending this request, open the Body tab, click 'Select File', and choose the file you want to upload."
 							},
 							"response": []
 						},
