@@ -56,6 +56,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
 - v0.15 - Added: Automatic ticket capture on all 'LogOn' requests (Workflow, Connect Webhooks, Webhooks, Planning, Administration). Test scripts now set Current_Ticket / Admin_Current_Ticket in the environment automatically, so there's no need to copy the ticket by hand after logging in.
 - v0.16 - Fixed: Removed hardcoded local file path from 'Upload Transfer Server Request' (Digital Articles and Print Articles) that broke on import for other users. Added a note in the request description prompting users to select their own file before sending.
 - v0.17 - Docs: Added folder descriptions to 'Connect Webhooks' and 'Webhooks' clarifying they are two distinct plugins, not duplicates — Connect Webhooks is the intended replacement (richer data, new delivery architecture) and Webhooks is legacy.
+- v0.18 - Fixed: Corrected invalid JSON in 'Connect Webhooks > GetWebhookRegistration' (params was wrapped in array brackets instead of an object), which would have failed to send as-is.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
