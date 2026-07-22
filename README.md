@@ -54,6 +54,7 @@ https://user-images.githubusercontent.com/43406765/217066487-bce9221c-52a5-4481-
  - v0.13 - Added: Connect Webhooks. These calls are here to show how to create Webhooks using the new Connect Webhooks feature. Note that this feature will not be available until May 2025
  - v0.14 - Added: CopyObjects call. Also SaveObjects has been available for quite some time but not noted in the available calls below.
 - v0.15 - Added: Automatic ticket capture on all 'LogOn' requests (Workflow, Connect Webhooks, Webhooks, Planning, Administration). Test scripts now set Current_Ticket / Admin_Current_Ticket in the environment automatically, so there's no need to copy the ticket by hand after logging in.
+- v0.16 - Fixed: Removed hardcoded local file path from 'Upload Transfer Server Request' (Digital Articles and Print Articles) that broke on import for other users. Added a note in the request description prompting users to select their own file before sending.
 
 Located in 'Digital Articles > Supporting Requests'
 1. Upload Transfer Server request (PUT)
