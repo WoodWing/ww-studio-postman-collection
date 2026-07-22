@@ -373,7 +373,34 @@
 						},
 						"description": "This endpoint makes an HTTP POST request to the specified URL with the provided payload. The request body contains a JSON object with the \"method\", \"id\", and \"Params\" fields. The \"Params\" field further contains a \"req\" object with various parameters such as \"User\", \"Password\", \"ClientName\", \"ClientAppName\", \"ClientAppVersion\", \"ClientAppSerial\", and \"RequestInfo\". The \"**classname**\" field is also present in the \"req\" object.\n\nThe user has requested to document the response of this request as a JSON schema."
 					},
-					"response": []
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"LogOn succeeded and ticket was returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (response.error) {",
+									"        throw new Error(\"LogOn failed: \" + JSON.stringify(response.error));",
+									"    }",
+									"",
+									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
+									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
+									"",
+									"    pm.environment.set(\"Current_Ticket\", response.result.Ticket);",
+									"});",
+									"",
+									"console.log(\"Current_Ticket set to:\", pm.environment.get(\"Current_Ticket\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "QueryObjects",
@@ -1024,7 +1051,34 @@
 						},
 						"description": "This endpoint makes an HTTP POST request to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/adminindex.php?protocol=JSON to perform a \"LogOn\" method. The request body should include the \"AdminUser\" and \"Password\" parameters for authentication, along with other optional parameters. The response will contain the result of the LogOn method execution."
 					},
-					"response": []
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"LogOn succeeded and ticket was returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (response.error) {",
+									"        throw new Error(\"LogOn failed: \" + JSON.stringify(response.error));",
+									"    }",
+									"",
+									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
+									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
+									"",
+									"    pm.environment.set(\"Admin_Current_Ticket\", response.result.Ticket);",
+									"});",
+									"",
+									"console.log(\"Admin_Current_Ticket set to:\", pm.environment.get(\"Admin_Current_Ticket\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "GetIssues",
@@ -1306,7 +1360,34 @@
 						},
 						"description": "This endpoint allows you to send an HTTP POST request to the specified URL and directory with the purpose of logging on. The request payload should be in JSON format and include the method, id, and Params with specific user information. Upon successful execution, the response will be documented as a JSON schema."
 					},
-					"response": []
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"LogOn succeeded and ticket was returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (response.error) {",
+									"        throw new Error(\"LogOn failed: \" + JSON.stringify(response.error));",
+									"    }",
+									"",
+									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
+									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
+									"",
+									"    pm.environment.set(\"Current_Ticket\", response.result.Ticket);",
+									"});",
+									"",
+									"console.log(\"Current_Ticket set to:\", pm.environment.get(\"Current_Ticket\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "CreateLayouts",
@@ -1399,7 +1480,34 @@
 						},
 						"description": "The HTTP POST request to the specified URL and directory is used to perform a \"LogOn\" method with the provided payload in JSON format. The request body includes the user's credentials, client information, and request details.\n\n### Request Body\n\n- method (string): \"LogOn\"\n    \n- id (string): \"1\"\n    \n- Params (object):\n    \n    - req (object):\n        \n        - User (string): The user's username\n            \n        - Password (string): The user's password\n            \n        - ClientName (string): \"postman\"\n            \n        - ClientAppName (string): \"postman_sample_requests\"\n            \n        - ClientAppVersion (string): \"\"\n            \n        - ClientAppSerial (string): \"\"\n            \n        - RequestInfo (array): Contains additional request information\n            \n        - **classname** (string): \"WflLogOnRequest\"\n            \n- jsonrpc (string): \"2.0\"\n    \n\n### Response\n\nThe response to the request includes a status code of 200 and the content type is \"application/json\". The response body contains the result object with various properties such as Ticket, Publications, NamedQueries, FeatureSet, LimitationSet, ServerInfo, Settings, Users, UserGroups, Membership, ObjectTypeProperties, ActionProperties, Terms, FeatureProfiles, Messages, TrackChangesColor, Dictionaries, MessageList, CurrentUser, MessageQueueConnections, MessageQueue, and **classname**. Each property holds specific data related to the logon process."
 					},
-					"response": []
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"LogOn succeeded and ticket was returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (response.error) {",
+									"        throw new Error(\"LogOn failed: \" + JSON.stringify(response.error));",
+									"    }",
+									"",
+									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
+									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
+									"",
+									"    pm.environment.set(\"Current_Ticket\", response.result.Ticket);",
+									"});",
+									"",
+									"console.log(\"Current_Ticket set to:\", pm.environment.get(\"Current_Ticket\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "GetTriggerOptions",
@@ -1710,7 +1818,34 @@
 						},
 						"description": "The endpoint makes an HTTP POST request to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php with the protocol parameter set to JSON. The request payload includes a method, id, and Params object containing User, Password, ClientName, ClientAppName, ClientAppVersion, ClientAppSerial, RequestInfo, and **classname** properties.\n\n### Response\n\nThe response of this request can be documented as a JSON schema."
 					},
-					"response": []
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"LogOn succeeded and ticket was returned\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    if (response.error) {",
+									"        throw new Error(\"LogOn failed: \" + JSON.stringify(response.error));",
+									"    }",
+									"",
+									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
+									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
+									"",
+									"    pm.environment.set(\"Current_Ticket\", response.result.Ticket);",
+									"});",
+									"",
+									"console.log(\"Current_Ticket set to:\", pm.environment.get(\"Current_Ticket\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
 				},
 				{
 					"name": "GetTriggerOptions",
