@@ -75,11 +75,6 @@ Located in 'Digital Articles'
 2. CreateObjects Digital Article
 
 
-## ToDo
-----
-1. Script to automatically add the ticket to the calls - Complete July 22nd, 2026
-2. Add and vet more calls
-3. Share some flows
 
 ## A list of Calls contained within the collection
 
@@ -155,5 +150,41 @@ Located in 'Digital Articles'
  2. QueryObjects Digital Article Templates
  3. CreateObjects Digital Article
 
+
+## ToDo
+----
+1. Script to automatically add the ticket to the calls - Complete July 22nd, 2026
+2. Written runbooks (lowest lift, no new tooling) — a markdown doc per common task (e.g. "Create a Digital Article") listing the exact request sequence to run and what each step sets/consumes (LogOn → QueryObjects Digital Article Templates → Upload Transfer Server Request → CreateObjects Digital Article). This can't be "played" with one click, but it's committable today, and you can still build the equivalent visually on the Flows canvas yourself for anyone who wants to click through it interactively.
+
+## Calls to Add
+----
+User Settings (partial coverage)
+ SaveUserSettings, DeleteUserSettings — collection only has GetUserSettings
+
+Object Targets (partial coverage)
+ UpdateObjectTargets, DeleteObjectTargets — collection only has CreateObjectTargets
+
+Multi-object / alternate property operations
+
+RestoreObjects, LockObjects (counterpart to UnlockObjects)
+
+SysGetSubApplications and the System Admin interface generally. This lines up with something already flagged in an earlier review pass: the collection's "System Administration" folder exists but is completely empty.
+
+Object Relations
+ CreateObjectRelations is covered. 
+ These are not: CreateObjectRelationsAsync, GetObjectRelations, UpdateObjectRelation(s), DeleteObjectRelation
+
+Dossier/Object Labels
+ CreateObjectLabels, UpdateObjectLabels, DeleteObjectLabels
+
+Messages
+ SendMessages, DeleteMessage(s)/DeleteMessageIDs
+
+Object Variants / versioning — not covered at all
+ CreateVersion, RestoreVersion, ListVersions, LockForOffline
+
+Generic dialog retrieval
+ GetDialog — a general framework method referenced across several features, not tied to one interface
+ 
 Video - Using the Postman Collection to create a digital article
 https://github.com/WoodWing/ww-studio-postman-collection/assets/43406765/37b8c46d-8ade-4b68-a0be-dc9fb1664a15
