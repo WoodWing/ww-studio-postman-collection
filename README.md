@@ -76,7 +76,7 @@ Located in 'Digital Articles'
 
 ## ToDo
 ----
-1. Script to automatically add the ticket to the calls
+1. Script to automatically add the ticket to the calls - Complete July 22nd, 2026
 2. Add and vet more calls
 3. Share some flows
 
