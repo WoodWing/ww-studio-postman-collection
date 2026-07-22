@@ -1378,10 +1378,10 @@
 									"    pm.expect(response.result, \"Response is missing 'result'\").to.exist;",
 									"    pm.expect(response.result.Ticket, \"Response is missing 'result.Ticket'\").to.exist;",
 									"",
-									"    pm.environment.set(\"Current_Ticket\", response.result.Ticket);",
+									"    pm.environment.set(\"Planning_Ticket\", response.result.Ticket);",
 									"});",
 									"",
-									"console.log(\"Current_Ticket set to:\", pm.environment.get(\"Current_Ticket\"));"
+									"console.log(\"Planning_Ticket set to:\", pm.environment.get(\"Planning_Ticket\"));"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1396,7 +1396,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"CreateLayouts\",\n\t\"id\": \"1\",\n\t\"params\": [{\n\t\t\"req\":{\n                \"Ticket\": \"{{Current_Ticket}}\",\n\t\t        \"Layouts\": [{\n\t\t\t        \"LayoutFromTemplate\": [{\n\t\t\t\t        \"NewLayout\": [{\n\t\t\t\t\t        \"Layout\": [{\n\t\t\t\t\t\t        \"Id\": \"\",\n\t\t\t\t\t\t        \"Name\": \"Planned Layout\",\n\t\t\t\t\t\t        \"Publication\": \"25\",\n\t\t\t\t\t\t        \"Issue\": \"41\",\n\t\t\t\t\t\t        \"PubChannel\": \"17\",\n\t\t\t\t\t\t        \"Section\": \"40\",\n\t\t\t\t\t\t        \"Status\": \"341\",\n\t\t\t\t\t\t        \"Pages\": [],\n\t\t\t\t\t\t        \"Editions\": [],\n\t\t\t\t\t\t        \"Deadline\": \"\",\n\t\t\t\t\t\t        \"Version\": \"\",\n\t\t\t\t\t\t        \"__classname__\": \"PlnLayout\"\n\t\t\t\t\t        }],\n\t\t\t\t        \"Template\": \"JG - Template\"    \n\t\t\t\t        }],\n                        \"__classname__\": \"PlnLayoutFromTemplate\"\n\t\t\t        }]\n\t\t        }],\n\t\t        \"__classname__\": \"PlnCreateLayoutsRequest\"\n\t        }\n    }],\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"CreateLayouts\",\n\t\"id\": \"1\",\n\t\"params\": [{\n\t\t\"req\":{\n                \"Ticket\": \"{{Planning_Ticket}}\",\n\t\t        \"Layouts\": [{\n\t\t\t        \"LayoutFromTemplate\": [{\n\t\t\t\t        \"NewLayout\": [{\n\t\t\t\t\t        \"Layout\": [{\n\t\t\t\t\t\t        \"Id\": \"\",\n\t\t\t\t\t\t        \"Name\": \"Planned Layout\",\n\t\t\t\t\t\t        \"Publication\": \"25\",\n\t\t\t\t\t\t        \"Issue\": \"41\",\n\t\t\t\t\t\t        \"PubChannel\": \"17\",\n\t\t\t\t\t\t        \"Section\": \"40\",\n\t\t\t\t\t\t        \"Status\": \"341\",\n\t\t\t\t\t\t        \"Pages\": [],\n\t\t\t\t\t\t        \"Editions\": [],\n\t\t\t\t\t\t        \"Deadline\": \"\",\n\t\t\t\t\t\t        \"Version\": \"\",\n\t\t\t\t\t\t        \"__classname__\": \"PlnLayout\"\n\t\t\t\t\t        }],\n\t\t\t\t        \"Template\": \"JG - Template\"    \n\t\t\t\t        }],\n                        \"__classname__\": \"PlnLayoutFromTemplate\"\n\t\t\t        }]\n\t\t        }],\n\t\t        \"__classname__\": \"PlnCreateLayoutsRequest\"\n\t        }\n    }],\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1420,6 +1420,99 @@
 							]
 						},
 						"description": "This HTTP POST request is used to create layouts in the editorial plan. The request is sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php with the protocol parameter set to JSON. The request body is in raw format and contains a method \"CreateLayouts\" along with an id and params. The params include a Ticket, Layouts, and classname. The Ticket is a placeholder for the current ticket, and Layouts contains information about the planned layout, such as Name, Publication, Issue, PubChannel, Section, Status, Pages, Editions, Deadline, Version, and Template.\n\nThe response to this request will contain the result of the CreateLayouts method, providing information about the success or failure of the layout creation operation."
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteLayouts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n        \"method\": \"DeleteLayouts\",\n        \"id\": \"1\",\n        \"params\": [\n            {\n                \"Layouts\": [\n                    {\n                        \"Id\": null,\n                        \"Name\": \"JG - Planned Page\",\n                        \"Publication\": \"WoodWing\",\n                        \"Issue\": \"41\",\n                        \"PubChannel\": \"Print\",\n                        \"Section\": \"News\",\n                        \"Status\": \"Draft\",\n                        \"Pages\": [\n                            {\n                            \"PageOrder\": 2,\n                            \"Master\": null,\n                            \"__classname__\": \"PlnPage\"\n                            },\n                            {\n                            \"PageOrder\": 5,\n                            \"Master\": null,\n                            \"__classname__\": \"PlnPage\"\n                            }\n                        ],\n                        \"Editions\": null,\n                        \"Deadline\": null,\n                        \"Version\": null,\n                        \"__classname__\": \"PlnLayout\"\n                    }\n                ],\n                \"Ticket\": \"{{Planning_Ticket}}\",\n                \"__classname__\": \"PlnDeleteLayoutsRequest\"\n            }\n        ],\n        \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"editorialplan.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request deletes one or more layouts from the editorial plan. It is sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php with the protocol parameter set to JSON. The request body contains the method \"DeleteLayouts\" along with an id and params. The params include a Ticket, an array of Layouts identifying which planned layout(s) to delete (matched by fields such as Id, Name, Publication, Issue, PubChannel, Section, Status, Pages, Editions, Deadline, and Version), and the classname \"PlnDeleteLayoutsRequest\".\n\nThe response to this request will contain the result of the DeleteLayouts method, indicating whether the deletion succeeded or failed."
+					},
+					"response": []
+				},
+				{
+					"name": "ModifyLayouts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n        \"method\": \"ModifyLayouts\",\n        \"id\": \"1\",\n        \"params\": [\n            {\n                \"Layouts\": [\n                    {\n                        \"Id\": \"15348\",\n                        \"Name\": \"JG - Planned Pages\",\n                        \"Publication\": \"WoodWing\",\n                        \"Issue\": \"Week 2\",\n                        \"PubChannel\": \"Print\",\n                        \"Section\": \"News\",\n                        \"Status\": \"Draft\",\n                        \"Pages\": [\n                            {\n                            \"PageOrder\": 2,\n                            \"Master\": null,\n                            \"PageNumber\":\"A2\",\n                            \"__classname__\": \"PlnPage\"\n                            },\n                            {\n                            \"PageOrder\": 5,\n                            \"Master\": null,\n                            \"PageNumber\":\"A5\",\n                            \"__classname__\": \"PlnPage\"\n                            }\n                        ],\n                        \"Editions\": null,\n                        \"Deadline\": null,\n                        \"Version\": null,\n                        \"__classname__\": \"PlnLayout\"\n                    }\n                ],\n                \"Ticket\": \"{{Planning_Ticket}}\",\n                \"__classname__\": \"PlnModifyLayoutsRequest\"\n            }\n        ],\n        \"jsonrpc\": \"2.0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php?protocol=JSON",
+							"host": [
+								"{{Studio_Server_URL}}"
+							],
+							"path": [
+								"{{Studio_Server_Directory}}",
+								"editorialplan.php"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "JSON"
+								}
+							]
+						},
+						"description": "This HTTP POST request modifies one or more existing layouts in the editorial plan. It is sent to {{Studio_Server_URL}}/{{Studio_Server_Directory}}/editorialplan.php with the protocol parameter set to JSON. The request body contains the method \"ModifyLayouts\" along with an id and params. The params include a Ticket, an array of Layouts identifying which planned layout(s) to update and their new property values (Id, Name, Publication, Issue, PubChannel, Section, Status, Pages, Editions, Deadline, and Version), and the classname \"PlnModifyLayoutsRequest\".\n\nThe response to this request will contain the result of the ModifyLayouts method, indicating whether the update succeeded or failed."
 					},
 					"response": []
 				}
