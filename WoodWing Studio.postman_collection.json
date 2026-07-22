@@ -353,7 +353,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"1.0\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"1.0\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"ServerInfo\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}"
 						},
 						"url": {
 							"raw": "{{Studio_Server_URL}}/{{Studio_Server_Directory}}/index.php?protocol=JSON",
@@ -1026,7 +1026,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"2\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"AdminUser\": \"{{Admin_User_Name}}\",\n\t\t\t\"Password\": \"{{Admin_User_Password}}\",\n            \"Ticket\": \"\",\n            \"Server\": \"\",\n\t\t\t\"ClientName\": \"postman\",\n            \"Domain\": \"\",\n\t\t\t\"ClientAppName\": \"postman_sample_admin_request\",\n            \"ClientAppVersion\": \"\",\n            \"ClientAppSerial\": \"\",\n            \"ClientAppCode\": \"\",\n\t\t\t\"__classname__\":\"AdmLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"2\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"AdminUser\": \"{{Admin_User_Name}}\",\n\t\t\t\"Password\": \"{{Admin_User_Password}}\",\n            \"Ticket\": \"\",\n            \"Server\": \"\",\n\t\t\t\"ClientName\": \"postman\",\n            \"Domain\": \"\",\n\t\t\t\"ClientAppName\": \"postman_sample_admin_request\",\n            \"ClientAppVersion\": \"\",\n            \"ClientAppSerial\": \"\",\n            \"ClientAppCode\": \"\",\n\t\t\t\"__classname__\":\"AdmLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1335,7 +1335,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n            \"Ticket\":\"\",\n            \"Server\":\"\",\n\t\t\t\"ClientName\":\"postman\",\n            \"Domain\":\"\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n\t\t\t\"__classname__\":\"PlnLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1435,7 +1435,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1600,7 +1600,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\":\"GetWebhookRegistration\",\n    \"id\":1,\n    \"params\": [\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"372c646c-941b-4b04-abc9-34a9dbbc9f71\",\n\t\t\t\"__classname__\": \"CwhRegGetWebhookRegistrationRequest\"\n\t\t}\n    ],\n\t\"jsonrpc\":\"2.0\"\n}",
+							"raw": "{\n    \"method\":\"GetWebhookRegistration\",\n    \"id\":1,\n    \"params\": {\n\t\t\"req\": {\n\t\t\t\"Ticket\": \"{{Current_Ticket}}\",\n            \"Id\": \"372c646c-941b-4b04-abc9-34a9dbbc9f71\",\n\t\t\t\"__classname__\": \"CwhRegGetWebhookRegistrationRequest\"\n\t\t}\n    },\n\t\"jsonrpc\":\"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1774,7 +1774,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"Params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
+							"raw": "{\n\t\"method\": \"LogOn\",\n\t\"id\": \"1\",\n\t\"params\": {\n\t\t\"req\": {\n\t\t\t\"User\":\"{{User_Name}}\",\n\t\t\t\"Password\":\"{{Password}}\",\n\t\t\t\"ClientName\":\"postman\",\n\t\t\t\"ClientAppName\":\"postman_sample_requests\",\n            \"ClientAppVersion\":\"\",\n            \"ClientAppSerial\":\"\",\n            \"RequestInfo\":[\"\"],\n\t\t\t\"__classname__\":\"WflLogOnRequest\"\n\t\t}\n\t},\n\t\"jsonrpc\": \"2.0\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2549,10 +2549,5 @@
 			]
 		}
 	],
-	"variable": [
-		{
-			"key": "UUID_For_PUT",
-			"value": ""
-		}
-	]
+	"variable": []
 }
