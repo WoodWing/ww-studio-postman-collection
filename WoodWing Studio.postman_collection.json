@@ -1761,7 +1761,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Connect Webhooks is the intended replacement for the legacy 'Webhooks' plugin (see the 'Webhooks' folder below). It generates significantly richer data from Studio, uses a different delivery architecture, and is where webhook capability will continue to be enriched going forward. New integrations should use this folder rather than 'Webhooks'.\n\nRequests here hit the 'ConnectWebhooks' server plugin (pluginindex.php?plugin=ConnectWebhooks), which is a separate endpoint from the legacy 'Webhooks' plugin used in the other folder."
 		},
 		{
 			"name": "Webhooks",
@@ -2134,7 +2135,7 @@
 					"response": []
 				}
 			],
-			"description": "List of available webhooks:  \n  \nObject event\n\nCreated\n\nCreates a new object in the workflow.\n\nMoved to Trash Can\n\nMoves an object from the workflow to the Trash Can.\n\nDeleted\n\nDeletes an object permanently (from the workflow or Trash Can).\n\nRestored\n\nRestores a deleted object from the Trash Can (back into the workflow).\n\nCopied\n\nCreates a new object by copying an existing object.\n\nSaved\n\nSaves a new file version for an object.\n\nModified\n\nChanges the properties of an object using the Properties dialog."
+			"description": "NOTE: This is the legacy webhook plugin, kept for reference and for existing integrations that still rely on it. It has been superseded by 'Connect Webhooks' (see that folder), which returns richer payload data, uses a different delivery architecture, and is where new development is focused. New integrations should use 'Connect Webhooks' instead.\n\nRequests here hit the legacy 'Webhooks' server plugin (pluginindex.php?plugin=Webhooks), a separate endpoint from 'ConnectWebhooks'.\n\nList of available webhooks:  \n  \nObject event\n\nCreated\n\nCreates a new object in the workflow.\n\nMoved to Trash Can\n\nMoves an object from the workflow to the Trash Can.\n\nDeleted\n\nDeletes an object permanently (from the workflow or Trash Can).\n\nRestored\n\nRestores a deleted object from the Trash Can (back into the workflow).\n\nCopied\n\nCreates a new object by copying an existing object.\n\nSaved\n\nSaves a new file version for an object.\n\nModified\n\nChanges the properties of an object using the Properties dialog."
 		},
 		{
 			"name": "Digital Articles",
