@@ -1,0 +1,20 @@
+{
+  "name": "studio-postman-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lint, rebuild and live-test the WoodWing Studio Postman collection",
+  "type": "module",
+  "scripts": {
+    "build": "node build-collection.mjs \"../WoodWing Studio.postman_collection.json\" \"../WoodWing Studio.postman_collection.json\"",
+    "lint": "node lint-collection.mjs \"../WoodWing Studio.postman_collection.json\"",
+    "test": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\"",
+    "test:admin": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\" Administration \"System Administration\"",
+    "test:workflow": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\" Workflow",
+    "test:planning": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\" Planning",
+    "test:webhooks": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\" Webhooks",
+    "test:connect-webhooks": "node run-tests.mjs --collection \"../WoodWing Studio.postman_collection.json\" \"Connect Webhooks\""
+  },
+  "devDependencies": {
+    "newman": "^6.2.1"
+  }
+}
